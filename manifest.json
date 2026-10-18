@@ -1,0 +1,1144 @@
+{
+  "schemaVersion": 1,
+  "exportedAt": "2026-10-18T10:13:41.972Z",
+  "sourceSite": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io",
+  "articles": [
+    {
+      "id": 220,
+      "title": "Validate DLP Enforcement Across Agent Authoring and Runtime",
+      "status": "publish",
+      "path": "articles/220-validate-dlp-enforcement-agent-authoring-runtime.html",
+      "metadataPath": "metadata/220.json",
+      "sha256": "d0404a2958c0f6cb3134e0886bffc498e58bed5779d40f94bd82198b6815dcd2"
+    },
+    {
+      "id": 215,
+      "title": "Configure a Production DLP Policy for a Governed Agent Factory",
+      "status": "publish",
+      "path": "articles/215-production-dlp-policy-agent-factory.html",
+      "metadataPath": "metadata/215.json",
+      "sha256": "030f954bb35acb117d9e9f9e7d921ac1f90bf372de33f99dfb77fc49c6302ba7"
+    },
+    {
+      "id": 214,
+      "title": "Configure a Nonproduction DLP Policy for a Governed Agent Factory",
+      "status": "publish",
+      "path": "articles/214-nonproduction-dlp-policy-agent-factory.html",
+      "metadataPath": "metadata/214.json",
+      "sha256": "e73e6a56f5b41c9784c6c6c49f5736f127eff9c3b97cfe7443504ede0fc8af0f"
+    },
+    {
+      "id": 191,
+      "title": "Registering Agent Factory Environments in a Governed Inventory",
+      "status": "publish",
+      "path": "articles/191-agent-factory-environment-inventory.html",
+      "metadataPath": "metadata/191.json",
+      "sha256": "31561215cb56cbbb37aad597461867719b4f747dcb72b86a82a774147338fc33"
+    },
+    {
+      "id": 190,
+      "title": "Governing Agent Factory Access with Environment Security Groups",
+      "status": "publish",
+      "path": "articles/190-agent-factory-environment-access-security-groups.html",
+      "metadataPath": "metadata/190.json",
+      "sha256": "2372a92cf396182f932c87dbcc65b2f8ad6b170e8c68fa340d809351e4d45648"
+    },
+    {
+      "id": 179,
+      "title": "Configure Power Platform Tenant Settings for a Governed Agent Factory",
+      "status": "publish",
+      "path": "articles/179-power-platform-tenant-settings-agent-factory.html",
+      "metadataPath": "metadata/179.json",
+      "sha256": "63b37eb38437015e0411d0e987c855ae08b5190a09d5b6ef0d96c401ce36d231"
+    },
+    {
+      "id": 170,
+      "title": "Configure Environment Routing for a Governed Agent Factory",
+      "status": "publish",
+      "path": "articles/170-environment-routing-governed-agent-factory.html",
+      "metadataPath": "metadata/170.json",
+      "sha256": "bb6e3e63cfb02ee161c4decf9d2d2ed26df2358a2d4e56adca6b2a48fcec9233"
+    },
+    {
+      "id": 152,
+      "title": "Building a Production Approval Guard for Microsoft Agent Factory",
+      "status": "publish",
+      "path": "articles/152-agent-factory-production-approval-guard.html",
+      "metadataPath": "metadata/152.json",
+      "sha256": "142f121be6154d4533503eb9125a368ebf2d4700a0abb1f0f97a248502df150f"
+    },
+    {
+      "id": 105,
+      "title": "Secure Agent Factory Pipelines with Microsoft Entra ID",
+      "status": "publish",
+      "path": "articles/105-secure-agent-factory-pipelines-with-microsoft-entra-id.html",
+      "metadataPath": "metadata/105.json",
+      "sha256": "b01c1b4c0088b87cbbca224bb6d62463af6fae46449b4176582d311f5b2a2803"
+    },
+    {
+      "id": 83,
+      "title": "Govern the Agent Factory Lifecycle with Power Platform Environment Groups",
+      "status": "publish",
+      "path": "articles/83-agent-factory-lifecycle-governance-environment-groups.html",
+      "metadataPath": "metadata/83.json",
+      "sha256": "7784a34b7ff588a8cbb45cd5d647f787af4633fec810bf033c7754411540679a"
+    },
+    {
+      "id": 70,
+      "title": "Deploy and Promote the Pilot Agent Through the Power Platform Pipeline",
+      "status": "publish",
+      "path": "articles/70-deploy-promote-pilot-agent-power-platform-pipeline.html",
+      "metadataPath": "metadata/70.json",
+      "sha256": "a6ae8a8fd8b7ff015777c9448abd6dd4fcb34aac9f34b2dc791da20f5dfdcbfd"
+    },
+    {
+      "id": 36,
+      "title": "Building an Agent Factory Pilot: From Copilot Studio Draft to Power Platform Pipeline",
+      "status": "publish",
+      "path": "articles/36-agent-factory-pilot-runbook.html",
+      "metadataPath": "metadata/36.json",
+      "sha256": "9a6703680f47ff7e0b52d7ab6c9ec395c16a23dda7e774547df7d21a57094f2a"
+    }
+  ],
+  "media": [
+    {
+      "id": 219,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/dlp-enforcement-03.jpg",
+      "path": "media/219-dlp-enforcement-03.jpg",
+      "bytes": 61998,
+      "sha256": "60cb677de2184619f4effe70c1f93cb1a233a1a84978c39c4eb7cf0d67755a0c"
+    },
+    {
+      "id": 218,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/dlp-enforcement-02.jpg",
+      "path": "media/218-dlp-enforcement-02.jpg",
+      "bytes": 61347,
+      "sha256": "8c48d75b4c9a377b1c4a5082ca916360c90daf9fd5472e08b384a69abb3eac26"
+    },
+    {
+      "id": 217,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/dlp-enforcement-01.jpg",
+      "path": "media/217-dlp-enforcement-01.jpg",
+      "bytes": 66105,
+      "sha256": "e11913911abe1fd480b6db3d32e97ae9de048873bd95f68419916573c96d9bb1"
+    },
+    {
+      "id": 213,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/production-dlp-09.png",
+      "path": "media/213-production-dlp-09.png",
+      "bytes": 1045192,
+      "sha256": "291e143b0ea3f198498e3ac3418c19bde1d0fe9148a56b979ce45c075faef318"
+    },
+    {
+      "id": 212,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/production-dlp-08.png",
+      "path": "media/212-production-dlp-08.png",
+      "bytes": 1139897,
+      "sha256": "3d8ae2dacd45734057bfd2bd33a8a0edb57a572b3b25800293c58d752a3ef6bb"
+    },
+    {
+      "id": 211,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/production-dlp-07.png",
+      "path": "media/211-production-dlp-07.png",
+      "bytes": 1069759,
+      "sha256": "bc498a4b298dfe644b91e2c80f5346fea150088c72bb9879dcf8383df4a0b041"
+    },
+    {
+      "id": 210,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/production-dlp-06.png",
+      "path": "media/210-production-dlp-06.png",
+      "bytes": 1198879,
+      "sha256": "257989aaf9b9ea34ec0df2dfd1bb5db63e2712e83add66aa2a1433b7180bf0f0"
+    },
+    {
+      "id": 209,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/production-dlp-05.png",
+      "path": "media/209-production-dlp-05.png",
+      "bytes": 1276192,
+      "sha256": "6cc15f7206a443ad3b85e74b3648c6601967b03a3cd3556871140b7f53abfa2e"
+    },
+    {
+      "id": 208,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/production-dlp-04.png",
+      "path": "media/208-production-dlp-04.png",
+      "bytes": 1226903,
+      "sha256": "3d958bf1a4b083cf7f90670c97814c6f0189644aeaf80cfdb4bc0b7248fe0733"
+    },
+    {
+      "id": 207,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/production-dlp-03.png",
+      "path": "media/207-production-dlp-03.png",
+      "bytes": 1220010,
+      "sha256": "188fd97baad30f78fb37bde310a512bfde17cf3ca925f05d9f257ffbbe6cf325"
+    },
+    {
+      "id": 206,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/production-dlp-02.png",
+      "path": "media/206-production-dlp-02.png",
+      "bytes": 1326297,
+      "sha256": "83b003928a3fd274f493f1818800c9c89f1a2c1e00463f206127d42707d9bce7"
+    },
+    {
+      "id": 205,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/production-dlp-01.png",
+      "path": "media/205-production-dlp-01.png",
+      "bytes": 1412604,
+      "sha256": "5d1833e87418a4e757de9f0d6e63c1d9fa06c34e8642a85951289bc95f0071ed"
+    },
+    {
+      "id": 204,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/nonproduction-dlp-09.png",
+      "path": "media/204-nonproduction-dlp-09.png",
+      "bytes": 1144918,
+      "sha256": "2c8d778ae318dbed5a3486ec758fe263fe3ba773bdc3c930a768c2ef6b4e29b0"
+    },
+    {
+      "id": 203,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/nonproduction-dlp-08.png",
+      "path": "media/203-nonproduction-dlp-08.png",
+      "bytes": 1120218,
+      "sha256": "d937f22d8f5849b3f7ee77d66ae92639701f28cfb21793a38b8ff437e675079e"
+    },
+    {
+      "id": 202,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/nonproduction-dlp-07.png",
+      "path": "media/202-nonproduction-dlp-07.png",
+      "bytes": 1128011,
+      "sha256": "21fbcb8daa0368fa297213bd7bf576444cb0be9a14267f4e7dd35c00c17e26e2"
+    },
+    {
+      "id": 201,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/nonproduction-dlp-06.png",
+      "path": "media/201-nonproduction-dlp-06.png",
+      "bytes": 1190400,
+      "sha256": "ecd712f22fff286158c6e6d5e651d9e440fa2b9ddbcabd435c54cb0117f58c77"
+    },
+    {
+      "id": 200,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/nonproduction-dlp-05.png",
+      "path": "media/200-nonproduction-dlp-05.png",
+      "bytes": 1231952,
+      "sha256": "acbd438aa97446a2790f4d63f0651f581d3201b896cc01a4ac75df6dad630e19"
+    },
+    {
+      "id": 199,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/nonproduction-dlp-04.png",
+      "path": "media/199-nonproduction-dlp-04.png",
+      "bytes": 1216422,
+      "sha256": "87a097869c9b32ce23e97475a95852eeb661ff474701e86a9d0f37dafe7778e1"
+    },
+    {
+      "id": 198,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/nonproduction-dlp-03.png",
+      "path": "media/198-nonproduction-dlp-03.png",
+      "bytes": 1233163,
+      "sha256": "bd3b84e41d52eb78f3ba86c849b88b1face47853409e0d11a4e6e5b788be65f5"
+    },
+    {
+      "id": 197,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/nonproduction-dlp-02.png",
+      "path": "media/197-nonproduction-dlp-02.png",
+      "bytes": 1326297,
+      "sha256": "83b003928a3fd274f493f1818800c9c89f1a2c1e00463f206127d42707d9bce7"
+    },
+    {
+      "id": 196,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/nonproduction-dlp-01.png",
+      "path": "media/196-nonproduction-dlp-01.png",
+      "bytes": 1345481,
+      "sha256": "49d6c07e61c951d58db068ca36bcc4267342f6018c50b1be8364321798f5df64"
+    },
+    {
+      "id": 189,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-inventory-05.png",
+      "path": "media/189-environment-inventory-05.png",
+      "bytes": 1108327,
+      "sha256": "73fe174f18fb8bf52fb0a1e0bd0347194bbcf11d28403e29892dadbc6839870d"
+    },
+    {
+      "id": 188,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-inventory-04.png",
+      "path": "media/188-environment-inventory-04.png",
+      "bytes": 1154597,
+      "sha256": "89459b454d5741490aa568cd562251fcf3a6d091f28d131d1ee00e34416dcbd8"
+    },
+    {
+      "id": 187,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-inventory-03.png",
+      "path": "media/187-environment-inventory-03.png",
+      "bytes": 1242223,
+      "sha256": "3e77a59925923a732aa752ae27ddc1b079981595f546d9421f4acadc2b6c6a4c"
+    },
+    {
+      "id": 186,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-inventory-02.png",
+      "path": "media/186-environment-inventory-02.png",
+      "bytes": 1343498,
+      "sha256": "f47e1f6bcf76a82e5dd9cd5b32dd65fb42d18d4c20ad766648e0a123e913d231"
+    },
+    {
+      "id": 185,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-inventory-01.png",
+      "path": "media/185-environment-inventory-01.png",
+      "bytes": 1195924,
+      "sha256": "bf061a35220aecfef4b07ab16b1267827c69dec3d70ad623d95702f9af5a75fe"
+    },
+    {
+      "id": 184,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-access-04.png",
+      "path": "media/184-environment-access-04.png",
+      "bytes": 1330882,
+      "sha256": "4d78a0b67b27660e2a99ce8fda72c1e0eee2af5561e2a27643308f4452220fa0"
+    },
+    {
+      "id": 183,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-access-03.png",
+      "path": "media/183-environment-access-03.png",
+      "bytes": 1199056,
+      "sha256": "5b79ea05de22862c189415611dca0684ff9c98e8605425f0480ca0b6dee415c8"
+    },
+    {
+      "id": 182,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-access-02.png",
+      "path": "media/182-environment-access-02.png",
+      "bytes": 1352278,
+      "sha256": "30f5ae53de87b38a2a49ff5f8ef81afc12f1faa4ef071a6be7f3393016e89d6a"
+    },
+    {
+      "id": 181,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-access-01.png",
+      "path": "media/181-environment-access-01.png",
+      "bytes": 1224249,
+      "sha256": "732c19080748f8f9c2c6978fd9925db02090ae78676e048240b546ad2bcdd2d3"
+    },
+    {
+      "id": 177,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/tenant-settings-06.png",
+      "path": "media/177-tenant-settings-06.png",
+      "bytes": 180795,
+      "sha256": "92e0f4814b5f13e34e52bd789ce07aacda31664a8c3cde5c37f8686981ef6b02"
+    },
+    {
+      "id": 176,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/tenant-settings-05.png",
+      "path": "media/176-tenant-settings-05.png",
+      "bytes": 205058,
+      "sha256": "96c340e48a5b4622eedcb2044543b14c0248355552a45b2600b9cd4116441e83"
+    },
+    {
+      "id": 175,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/tenant-settings-04.png",
+      "path": "media/175-tenant-settings-04.png",
+      "bytes": 38039,
+      "sha256": "a1220f24eddd4ad373a64605c2afaf429d803aa39e0395810ca4dee6d78e3f7e"
+    },
+    {
+      "id": 174,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/tenant-settings-03.png",
+      "path": "media/174-tenant-settings-03.png",
+      "bytes": 41032,
+      "sha256": "c9d5f638b63535fbf2bc488216ac0e3350c5f0f6074ee5485ba4e1d5ae72f42b"
+    },
+    {
+      "id": 173,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/tenant-settings-02.png",
+      "path": "media/173-tenant-settings-02.png",
+      "bytes": 100930,
+      "sha256": "551e6cf9765c34b7af5b046eb0eb6e79c4f324865bfcfc85d95e11816cba2dab"
+    },
+    {
+      "id": 172,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/tenant-settings-01.png",
+      "path": "media/172-tenant-settings-01.png",
+      "bytes": 463892,
+      "sha256": "77b8e3c1051eeb550f9628217cf548e91c6d86537589900afbdd8c667513455a"
+    },
+    {
+      "id": 169,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-routing-07.png",
+      "path": "media/169-environment-routing-07.png",
+      "bytes": 109171,
+      "sha256": "93177e778eccfdffe7629620a9e2041c2d4f10ecf58bb805807989485412e34f"
+    },
+    {
+      "id": 168,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-routing-06.png",
+      "path": "media/168-environment-routing-06.png",
+      "bytes": 75036,
+      "sha256": "5edc09cd536fa9a7cff8fc82212483173ac4b474fd65591c23a8d4a475652fe0"
+    },
+    {
+      "id": 167,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-routing-05.png",
+      "path": "media/167-environment-routing-05.png",
+      "bytes": 106170,
+      "sha256": "1e9d1581b232c634741e220371fc7ef618cec08973bf0c24072dcbc33a097419"
+    },
+    {
+      "id": 166,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-routing-04.png",
+      "path": "media/166-environment-routing-04.png",
+      "bytes": 65470,
+      "sha256": "4ea1a362dee02d3ae91dbcc34188266f489456bdad80064ad3d32181eff117bb"
+    },
+    {
+      "id": 165,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-routing-03.png",
+      "path": "media/165-environment-routing-03.png",
+      "bytes": 99097,
+      "sha256": "927beeca0784686bba061b28e8df686fb7dbcfa499b016a72a5478788ec9cfc8"
+    },
+    {
+      "id": 164,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-routing-02.png",
+      "path": "media/164-environment-routing-02.png",
+      "bytes": 66403,
+      "sha256": "0ee1c4892b862e21ebd65e3161867eb73a34e6f7dcde7f1934c6cac40452fc9d"
+    },
+    {
+      "id": 163,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/environment-routing-01.png",
+      "path": "media/163-environment-routing-01.png",
+      "bytes": 104047,
+      "sha256": "6d85094fb7186e83f8eb535923ce2706e4a1b043b07384dc9a322272fa34cc61"
+    },
+    {
+      "id": 158,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-revised-16.webp",
+      "path": "media/158-approval-guard-revised-16.webp",
+      "bytes": 36028,
+      "sha256": "444554c65ba95e0b65bbaa60b9fe604c9581ca402498cfc7f66c950e1b653328"
+    },
+    {
+      "id": 157,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-revised-15.webp",
+      "path": "media/157-approval-guard-revised-15.webp",
+      "bytes": 22222,
+      "sha256": "4803ac9f829572ee5c4565e0467167dd8b6650bc6599487dc5a105c452ce9495"
+    },
+    {
+      "id": 156,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-revised-14.webp",
+      "path": "media/156-approval-guard-revised-14.webp",
+      "bytes": 17204,
+      "sha256": "3af62c5652e0de9afdf041eb5f7830e2d7ccfcb3b2486780ef105b8002d0ac01"
+    },
+    {
+      "id": 155,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-revised-13.webp",
+      "path": "media/155-approval-guard-revised-13.webp",
+      "bytes": 8108,
+      "sha256": "105961a99ef9633ce923707c182d42836374d72232dfd4a69cd3a8613b966b69"
+    },
+    {
+      "id": 154,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-revised-11.webp",
+      "path": "media/154-approval-guard-revised-11.webp",
+      "bytes": 36320,
+      "sha256": "5b474866330146929e27bee30f5aafff50299ed7d196a8cee84e84d4f607c3f7"
+    },
+    {
+      "id": 153,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-revised-10.webp",
+      "path": "media/153-approval-guard-revised-10.webp",
+      "bytes": 49696,
+      "sha256": "3653d8d412617555a3d5e5f50e4baf299dfe17a4e77df80a991eff7c23768c47"
+    },
+    {
+      "id": 151,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-29.webp",
+      "path": "media/151-approval-guard-29.webp",
+      "bytes": 44982,
+      "sha256": "cda6b95a75e94b7f8a32cd352face54de88f707f25f6bd2607a22132fe85af3b"
+    },
+    {
+      "id": 150,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-28.webp",
+      "path": "media/150-approval-guard-28.webp",
+      "bytes": 45640,
+      "sha256": "a5b8480356f3885700d329ab9b3da7037450bbaf93c2f376baffdd84348f7b3f"
+    },
+    {
+      "id": 149,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-27.webp",
+      "path": "media/149-approval-guard-27.webp",
+      "bytes": 46520,
+      "sha256": "952279532bd53e6dd7ac3fd34d5b192172687d2a72c8f6f3d2683a7ba8c2b476"
+    },
+    {
+      "id": 148,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-26.webp",
+      "path": "media/148-approval-guard-26.webp",
+      "bytes": 54072,
+      "sha256": "d774637d635bedb381e0541cf9853aeb1fb43fc06d581ad38fd1c3e12ff58039"
+    },
+    {
+      "id": 147,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-25.webp",
+      "path": "media/147-approval-guard-25.webp",
+      "bytes": 17438,
+      "sha256": "a93a058da3e8fa7140659bdf8adf0ecfdda2550a2f046684203b67968f67c903"
+    },
+    {
+      "id": 146,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-24.webp",
+      "path": "media/146-approval-guard-24.webp",
+      "bytes": 27560,
+      "sha256": "5f6a1eaf7498b2b01b232fbd75843d7950d2399f32c782d7dc497f3bfd2f6cac"
+    },
+    {
+      "id": 145,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-23.webp",
+      "path": "media/145-approval-guard-23.webp",
+      "bytes": 46570,
+      "sha256": "882e86d0c8f750ca793cd3392a12282b70551595a0e4353a13ff1dadba89141f"
+    },
+    {
+      "id": 144,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-22.webp",
+      "path": "media/144-approval-guard-22.webp",
+      "bytes": 50016,
+      "sha256": "2a731b22d1eeb0689f52ce7206f2a64eaf9ca3f1717be0100e9b72bff3dc539b"
+    },
+    {
+      "id": 143,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-21.webp",
+      "path": "media/143-approval-guard-21.webp",
+      "bytes": 35880,
+      "sha256": "b836c1a133b07d57a4f32c711a3aedb46ec3213726db7d88fbaf58575f6c67e8"
+    },
+    {
+      "id": 142,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-20.webp",
+      "path": "media/142-approval-guard-20.webp",
+      "bytes": 15724,
+      "sha256": "b1089901a61f95de7417ce7539a52bd0c2e6d2f9f669955ee6e205de213bd2fe"
+    },
+    {
+      "id": 141,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-19.webp",
+      "path": "media/141-approval-guard-19.webp",
+      "bytes": 49004,
+      "sha256": "0432ab2a5ad391189568750bf75cbd605b77c04269841c18ae0bdd4ac670dd4c"
+    },
+    {
+      "id": 140,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-18.webp",
+      "path": "media/140-approval-guard-18.webp",
+      "bytes": 38026,
+      "sha256": "70dade0a96304fced9604fe20a33900bcda6b23c6c0d16390674b66aca541919"
+    },
+    {
+      "id": 139,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-17.webp",
+      "path": "media/139-approval-guard-17.webp",
+      "bytes": 57998,
+      "sha256": "4d81a8358cf89d60afd6283299219dd856b540b29be401ad55588f84449a743b"
+    },
+    {
+      "id": 138,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-16.webp",
+      "path": "media/138-approval-guard-16.webp",
+      "bytes": 54058,
+      "sha256": "ae580133f19e252dd6f1dd53c8df2f215143ff9fd6b65ab1c2f62a087f837b38"
+    },
+    {
+      "id": 137,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-15.webp",
+      "path": "media/137-approval-guard-15.webp",
+      "bytes": 55716,
+      "sha256": "920e2599f0099f52a25ed17d952e5c97e54f3e38f4ea5c1189fe1705f9e66d34"
+    },
+    {
+      "id": 136,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-14.webp",
+      "path": "media/136-approval-guard-14.webp",
+      "bytes": 70834,
+      "sha256": "7c73f898431fcf1acc1cfe13da952d587b88c8d5cbee3c0bd66b154e8432e869"
+    },
+    {
+      "id": 135,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-13.webp",
+      "path": "media/135-approval-guard-13.webp",
+      "bytes": 44570,
+      "sha256": "3060c74b074f89cdb90ea66005ae63b8ed69468b19ab9a7de26418611c4f389d"
+    },
+    {
+      "id": 134,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-12.webp",
+      "path": "media/134-approval-guard-12.webp",
+      "bytes": 52342,
+      "sha256": "f2e4351ff5851f71773eb3f653454fe4d602d1a3161885bd2c0a4bf2559f7ad4"
+    },
+    {
+      "id": 133,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-11.webp",
+      "path": "media/133-approval-guard-11.webp",
+      "bytes": 46176,
+      "sha256": "ac81b0ed645ebe60e71cd4eb29151add5e2e910319025f3d7c3bd9eb625a086d"
+    },
+    {
+      "id": 132,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-10.webp",
+      "path": "media/132-approval-guard-10.webp",
+      "bytes": 54722,
+      "sha256": "ed18b90aaa74115575981acaa843525a9e38be9c5cdd8bdef9f6decc27f36f56"
+    },
+    {
+      "id": 131,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-09.webp",
+      "path": "media/131-approval-guard-09.webp",
+      "bytes": 39036,
+      "sha256": "5d780c932f8b8ed5c47e2299bdbad20770cc541f3f852f52c5a242dce3e4549d"
+    },
+    {
+      "id": 130,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-08.webp",
+      "path": "media/130-approval-guard-08.webp",
+      "bytes": 25646,
+      "sha256": "0388a32e48cb86dd85ea1863c581ae505acbe897172a5b4f35d2f46d74b9e29d"
+    },
+    {
+      "id": 129,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-07.webp",
+      "path": "media/129-approval-guard-07.webp",
+      "bytes": 22940,
+      "sha256": "1d776602848a4458b08c946644e9e5fe80d80af66a1889b1bb03de6797b4b64b"
+    },
+    {
+      "id": 128,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-06.webp",
+      "path": "media/128-approval-guard-06.webp",
+      "bytes": 24212,
+      "sha256": "f6a7474796658efd317bcd59c36621dd0b51339f73766959cd7c2adb119fe4e7"
+    },
+    {
+      "id": 127,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-05.webp",
+      "path": "media/127-approval-guard-05.webp",
+      "bytes": 39608,
+      "sha256": "75076fd1884638dc559190a39c0e2d79a06b30de14f6a8d240612d1cc657dfeb"
+    },
+    {
+      "id": 126,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-04.webp",
+      "path": "media/126-approval-guard-04.webp",
+      "bytes": 60818,
+      "sha256": "01343a36f9f7a98fadfc6113069bf61e796d9fafc468fe5b0917be47205d5c5b"
+    },
+    {
+      "id": 125,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-03.webp",
+      "path": "media/125-approval-guard-03.webp",
+      "bytes": 60634,
+      "sha256": "655eb2cfb7cd6729a2cc438603367ece56d1c69ebbe0196552a9c4383205206e"
+    },
+    {
+      "id": 124,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-02.webp",
+      "path": "media/124-approval-guard-02.webp",
+      "bytes": 58188,
+      "sha256": "bb085e1f14fe35911d3f153eea8d38eb7a745c159080a8b8dd4cd5c23590d360"
+    },
+    {
+      "id": 123,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-01.webp",
+      "path": "media/123-approval-guard-01.webp",
+      "bytes": 58134,
+      "sha256": "d3302267eb61e717ebc27ea755896802737a4f0b984cb7a0b10e1c04c10f26e1"
+    },
+    {
+      "id": 119,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/teams-created-confirmation.webp",
+      "path": "media/119-teams-created-confirmation.webp",
+      "bytes": 46322,
+      "sha256": "3b6e0b3cc9b7231ebb475a7bbe14ee7c10100ed5ec8533fb17585a46fac4a1d0"
+    },
+    {
+      "id": 118,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/share-access-04.webp",
+      "path": "media/118-share-access-04.webp",
+      "bytes": 53804,
+      "sha256": "d49abacf154d5b4db7374edb63d62fdf54584ce5271204339b979594d746bf85"
+    },
+    {
+      "id": 117,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/share-access-03.webp",
+      "path": "media/117-share-access-03.webp",
+      "bytes": 16444,
+      "sha256": "70982ffdacc8e8b47267b20aba7f33ebc1d1d0c1ad75c982c466aaf16d638174"
+    },
+    {
+      "id": 116,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/share-access-02.webp",
+      "path": "media/116-share-access-02.webp",
+      "bytes": 51652,
+      "sha256": "158775cde337db567a28cba782ca3422d7eec10c37efb816bf72627add07b96e"
+    },
+    {
+      "id": 115,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/share-access-01.webp",
+      "path": "media/115-share-access-01.webp",
+      "bytes": 53690,
+      "sha256": "26ceb7d2bcf04d08ff575ad68c9c79fb1a1c7219fb12fb56b38ca04f78590cc8"
+    },
+    {
+      "id": 114,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/security-group.webp",
+      "path": "media/114-security-group.webp",
+      "bytes": 71630,
+      "sha256": "7b6f6bfd69a0c7913d18e985ac791af2d94898c3bcb691167a7ed971b8591a34"
+    },
+    {
+      "id": 113,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/role-assignment-confirmation.webp",
+      "path": "media/113-role-assignment-confirmation.webp",
+      "bytes": 49982,
+      "sha256": "0f1c0fb0b0d13259a4647284f63cdaf60f1f2495bc9e0a2165999f9c9709cfb8"
+    },
+    {
+      "id": 112,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-admins-01.webp",
+      "path": "media/112-pipeline-admins-01.webp",
+      "bytes": 51346,
+      "sha256": "e9efe3ad11a76b1a2043c3978e2421aaed430cbc5093df9706a95bacf6be807b"
+    },
+    {
+      "id": 111,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-admins-00.webp",
+      "path": "media/111-pipeline-admins-00.webp",
+      "bytes": 65988,
+      "sha256": "37e2f25cfd243f83230b319894b1a63f90c5844ecafe04150cc1c23389b63258"
+    },
+    {
+      "id": 110,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/new-team-creation.webp",
+      "path": "media/110-new-team-creation.webp",
+      "bytes": 34980,
+      "sha256": "30d5273e23e45e3183fdca162e82b83e4f13d78bec1bb52999f881e2e6aa2b76"
+    },
+    {
+      "id": 109,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/create-team-ppac.webp",
+      "path": "media/109-create-team-ppac.webp",
+      "bytes": 28020,
+      "sha256": "e9495500029d6d7080010391ce82ede8622c5f371e349ace3cce31ee66c2efbb"
+    },
+    {
+      "id": 107,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-admins-00-1.png",
+      "path": "media/107-pipeline-admins-00-1.png",
+      "bytes": 106413,
+      "sha256": "b5962e0eac21f7024577d2e2bdadf2d4bc5fba24a7d057c802a3d0c2c7c9c5df"
+    },
+    {
+      "id": 106,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-admins-00.png",
+      "path": "media/106-pipeline-admins-00.png",
+      "bytes": 106413,
+      "sha256": "b5962e0eac21f7024577d2e2bdadf2d4bc5fba24a7d057c802a3d0c2c7c9c5df"
+    },
+    {
+      "id": 81,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/lifecycle-governance-08.webp",
+      "path": "media/81-lifecycle-governance-08.webp",
+      "bytes": 41996,
+      "sha256": "4131ee424fa863e58ef63eb39d8889efba4c29dc83776e0ea6cc0a5fed626fee"
+    },
+    {
+      "id": 80,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/lifecycle-governance-07.webp",
+      "path": "media/80-lifecycle-governance-07.webp",
+      "bytes": 36454,
+      "sha256": "b03174e8358772c2ab6eb40c0f026ede861e569af671718e8215c06e5002a8f7"
+    },
+    {
+      "id": 79,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/lifecycle-governance-06.webp",
+      "path": "media/79-lifecycle-governance-06.webp",
+      "bytes": 45248,
+      "sha256": "1d0f3b6cc3c730278b1a502e07bd269acb0c917493f0fa67807d839ef82f6594"
+    },
+    {
+      "id": 78,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/lifecycle-governance-05.webp",
+      "path": "media/78-lifecycle-governance-05.webp",
+      "bytes": 45056,
+      "sha256": "56d56ff66834c6067537291355680a0596c69831d55f308998fc2b62bd55cedc"
+    },
+    {
+      "id": 77,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/lifecycle-governance-04.webp",
+      "path": "media/77-lifecycle-governance-04.webp",
+      "bytes": 59170,
+      "sha256": "f8187a1b823204d30dfa4cb3ad13ce6ba3c1f7733aacc543c70038d9c8d126d4"
+    },
+    {
+      "id": 76,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/lifecycle-governance-03.webp",
+      "path": "media/76-lifecycle-governance-03.webp",
+      "bytes": 43660,
+      "sha256": "9d61bf4456e69bec7b8d74341c507b9bffab35260df20b1d01a66d3ac7f2014b"
+    },
+    {
+      "id": 75,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/lifecycle-governance-02.webp",
+      "path": "media/75-lifecycle-governance-02.webp",
+      "bytes": 38250,
+      "sha256": "675b8c0fa96137edbbc0eaf012164b3bdf78da0321bf90dd2e410bf71f9c2f7c"
+    },
+    {
+      "id": 74,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/lifecycle-governance-01.webp",
+      "path": "media/74-lifecycle-governance-01.webp",
+      "bytes": 44188,
+      "sha256": "10009adbbafc544ede9b4dab557d11f3e953cfcec7fa7d7265fd7259932334e4"
+    },
+    {
+      "id": 68,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-21.webp",
+      "path": "media/68-pipeline-promotion-21.webp",
+      "bytes": 47812,
+      "sha256": "8040d4bb74a31b28053146aee0e579757b6c154fe464d0eb26949f710dfd07b1"
+    },
+    {
+      "id": 67,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-20.webp",
+      "path": "media/67-pipeline-promotion-20.webp",
+      "bytes": 55410,
+      "sha256": "3d0dda407728bab919e4d4b97b3ce79df067d47db4886857b6099007c2dc1c12"
+    },
+    {
+      "id": 66,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-19.webp",
+      "path": "media/66-pipeline-promotion-19.webp",
+      "bytes": 52160,
+      "sha256": "41d5278d0f73ebeddbe8d492831b37de22c621c135bbcbae71a4c34d3af48f24"
+    },
+    {
+      "id": 65,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-18.webp",
+      "path": "media/65-pipeline-promotion-18.webp",
+      "bytes": 56448,
+      "sha256": "afd46546bff8db48220f29b503950ffe58a30ab1725d1a14cde3ea073f024c87"
+    },
+    {
+      "id": 64,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-17.webp",
+      "path": "media/64-pipeline-promotion-17.webp",
+      "bytes": 39472,
+      "sha256": "ed13a76651ad90a737e0d754cf77a6a25acd727e612bd99923f1f768b5d0c0d0"
+    },
+    {
+      "id": 63,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-16.webp",
+      "path": "media/63-pipeline-promotion-16.webp",
+      "bytes": 44806,
+      "sha256": "a2e07e754bd783587125e82ec0cc43e1ca0af4f85c336f29a18a6e71eaa48998"
+    },
+    {
+      "id": 62,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-15.webp",
+      "path": "media/62-pipeline-promotion-15.webp",
+      "bytes": 21460,
+      "sha256": "93c98764128dde0ae7b7275d08b91b9e78fdba82bbe75e1f37aef4991712160a"
+    },
+    {
+      "id": 61,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-14.webp",
+      "path": "media/61-pipeline-promotion-14.webp",
+      "bytes": 36376,
+      "sha256": "12c70084118250e648a39ea962cbca1fdff11de328deb5b873c73aa34bb0c1d3"
+    },
+    {
+      "id": 60,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-13.webp",
+      "path": "media/60-pipeline-promotion-13.webp",
+      "bytes": 38378,
+      "sha256": "221eb8fca2a7731da067bf7ac5cc0e9ed7dc2e983a8e914a01c635022e8b78ea"
+    },
+    {
+      "id": 59,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-12.webp",
+      "path": "media/59-pipeline-promotion-12.webp",
+      "bytes": 30146,
+      "sha256": "a5fe9b80421428914081ac9ab269583f8efbd16d1f430061ec3509d2730b579e"
+    },
+    {
+      "id": 58,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-11.webp",
+      "path": "media/58-pipeline-promotion-11.webp",
+      "bytes": 33728,
+      "sha256": "f94a1062aa92dd319d3c76b6ade72fdb595bfd9723ab06a0e9ab8c3b4ff1048b"
+    },
+    {
+      "id": 57,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-10.webp",
+      "path": "media/57-pipeline-promotion-10.webp",
+      "bytes": 23654,
+      "sha256": "ac516f57abc82b50178af161c54f7232bf16cd35092a1b4511cd9978dc1ccd6f"
+    },
+    {
+      "id": 56,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-09.webp",
+      "path": "media/56-pipeline-promotion-09.webp",
+      "bytes": 35656,
+      "sha256": "2a15e9ccd000411b27bea0e8a15cd08156b86e76b0e72bae8dcc4d494ba715e9"
+    },
+    {
+      "id": 55,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-08.webp",
+      "path": "media/55-pipeline-promotion-08.webp",
+      "bytes": 34840,
+      "sha256": "cce8ae3a3e65ec2011b8fbc20fafbfa334512b103a8cdc1ac31885c665043a02"
+    },
+    {
+      "id": 54,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-07.webp",
+      "path": "media/54-pipeline-promotion-07.webp",
+      "bytes": 34614,
+      "sha256": "a6bcfadae31b025aeb71e6f82964de875c4c82bb411dfc8293626e796e162224"
+    },
+    {
+      "id": 53,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-06.webp",
+      "path": "media/53-pipeline-promotion-06.webp",
+      "bytes": 36826,
+      "sha256": "247cef64dc34646e870f84c7000e04f45e10f4170cd9f0bd7e799d338331ce6c"
+    },
+    {
+      "id": 52,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-05.webp",
+      "path": "media/52-pipeline-promotion-05.webp",
+      "bytes": 39028,
+      "sha256": "d8abf796e1faa87e57c7eedbb8a9d8bcf02d574cbf4ba5636ac6c011f729b68b"
+    },
+    {
+      "id": 51,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-04.webp",
+      "path": "media/51-pipeline-promotion-04.webp",
+      "bytes": 43432,
+      "sha256": "70ef38c6af89cd53b94815c1078df5597293f9825f9389182354ab6ff5bd9224"
+    },
+    {
+      "id": 50,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-03.webp",
+      "path": "media/50-pipeline-promotion-03.webp",
+      "bytes": 53606,
+      "sha256": "87043232ba2f65f116307b86a081dfcff18e4ab3935233bcfa63f11d61ee9b36"
+    },
+    {
+      "id": 49,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-02.webp",
+      "path": "media/49-pipeline-promotion-02.webp",
+      "bytes": 53020,
+      "sha256": "c74d53b94fff777698d514b3006a60c7503041b631777dc935b43c0416c91bfa"
+    },
+    {
+      "id": 48,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-promotion-01.webp",
+      "path": "media/48-pipeline-promotion-01.webp",
+      "bytes": 65418,
+      "sha256": "b9542138fa6ff13e50755ac2fc2a645ecbe6c381aacbfdd618f890a583076f4d"
+    },
+    {
+      "id": 33,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-28.png",
+      "path": "media/33-agent-factory-step-28.png",
+      "bytes": 72086,
+      "sha256": "50e9d42eaae4da07a53a05278d6ffee7959fe5ebe20e1d67f5a43409e57f328c"
+    },
+    {
+      "id": 32,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-27.png",
+      "path": "media/32-agent-factory-step-27.png",
+      "bytes": 106157,
+      "sha256": "e9f9cd582a27d47beb862a914eee4145fbbea664e38ec22e5d37f91eaf0fd48a"
+    },
+    {
+      "id": 31,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-26.png",
+      "path": "media/31-agent-factory-step-26.png",
+      "bytes": 68373,
+      "sha256": "0cf1fcb853e843145de9e493c8d23febbbc749392749c6a95a37ba615d66ef31"
+    },
+    {
+      "id": 30,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-25.png",
+      "path": "media/30-agent-factory-step-25.png",
+      "bytes": 106790,
+      "sha256": "3ca540a248675926fd6a6e3be9d74a700f066cf0912b387724f0920cee2b1399"
+    },
+    {
+      "id": 29,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-24.png",
+      "path": "media/29-agent-factory-step-24.png",
+      "bytes": 69970,
+      "sha256": "a41f964d770686c979a0b40809e423b71c8297c19f97605aec16270f12f60c03"
+    },
+    {
+      "id": 28,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-23.png",
+      "path": "media/28-agent-factory-step-23.png",
+      "bytes": 63056,
+      "sha256": "fed88e49a42dccbf55ddb8c745426aa726abc666f17f7e908afa1f8489918e59"
+    },
+    {
+      "id": 27,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-22.png",
+      "path": "media/27-agent-factory-step-22.png",
+      "bytes": 267298,
+      "sha256": "207605ceda0a50f442e00f72ce82afeef45cf7901f08ffa07b5e10ccb6e45966"
+    },
+    {
+      "id": 26,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-21.png",
+      "path": "media/26-agent-factory-step-21.png",
+      "bytes": 313866,
+      "sha256": "aefe1a193d6ee94559430f494cbe033368736242621cd46705b8e0d0100cb179"
+    },
+    {
+      "id": 25,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-20.png",
+      "path": "media/25-agent-factory-step-20.png",
+      "bytes": 296872,
+      "sha256": "733cbb2a652ee2bcbde558184c4851d9b2aace846d1156c257e820366335472c"
+    },
+    {
+      "id": 24,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-19.png",
+      "path": "media/24-agent-factory-step-19.png",
+      "bytes": 125466,
+      "sha256": "39bb0d01557527375839b7edc503cdb7089e9d744a61420f1ca0c71c1a145263"
+    },
+    {
+      "id": 23,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-18.png",
+      "path": "media/23-agent-factory-step-18.png",
+      "bytes": 114557,
+      "sha256": "2fa1e343d2f0fe57b5c8d76869abdf624dcda2161667fe7d4d3f00eb9eb9731f"
+    },
+    {
+      "id": 22,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-17.png",
+      "path": "media/22-agent-factory-step-17.png",
+      "bytes": 96898,
+      "sha256": "0ca9cfc80e21ee622df3b808ceb640c212da8a5541e7b0b8a6fd969e49571681"
+    },
+    {
+      "id": 21,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-16.png",
+      "path": "media/21-agent-factory-step-16.png",
+      "bytes": 96692,
+      "sha256": "a1ff99f8588a7c2f96b4c0184e8efc21ec11273f0709bf3399058de9eb9ab29e"
+    },
+    {
+      "id": 20,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-15.png",
+      "path": "media/20-agent-factory-step-15.png",
+      "bytes": 73035,
+      "sha256": "a15b938269a94b396e9dcc54823600daf0646d8883fbb32a13b8e9c67bbff1d7"
+    },
+    {
+      "id": 19,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-14.png",
+      "path": "media/19-agent-factory-step-14.png",
+      "bytes": 109240,
+      "sha256": "d6f95b5f930d9cf7c33e0c357901ac74dcfea2f819075d238d8c22c0c6942d94"
+    },
+    {
+      "id": 18,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-13.png",
+      "path": "media/18-agent-factory-step-13.png",
+      "bytes": 162033,
+      "sha256": "a8bcab4d7825987b7ce38f94704d770b973fb3f3c3d71ab0add0624b48b68f26"
+    },
+    {
+      "id": 17,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-12.png",
+      "path": "media/17-agent-factory-step-12.png",
+      "bytes": 117175,
+      "sha256": "a73f1ad3cac382349b5ea5c59852335d9f78608a6234c7cb38e8a6947c01c9a9"
+    },
+    {
+      "id": 16,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-11.png",
+      "path": "media/16-agent-factory-step-11.png",
+      "bytes": 168455,
+      "sha256": "0e38dc76a47c9b7e73608a81f77ee9427cbae6bb014ff289bdbf84ea16c6b78b"
+    },
+    {
+      "id": 15,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-10.png",
+      "path": "media/15-agent-factory-step-10.png",
+      "bytes": 196021,
+      "sha256": "8db14edaafb66fdfd443459536ee43628daecd32ea94d9829a20175172b22a93"
+    },
+    {
+      "id": 14,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-09.png",
+      "path": "media/14-agent-factory-step-09.png",
+      "bytes": 204016,
+      "sha256": "e2aff8168f3d865e55e9f950ea972753a0e8e4e4db1a3927ba8e94ee8e4b0a83"
+    },
+    {
+      "id": 13,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-08.png",
+      "path": "media/13-agent-factory-step-08.png",
+      "bytes": 157360,
+      "sha256": "8ad0c67a934a7871aea6c8f54539b7039b7a5d0c37f76beba51e01f157db2311"
+    },
+    {
+      "id": 12,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-07.png",
+      "path": "media/12-agent-factory-step-07.png",
+      "bytes": 167267,
+      "sha256": "39642379a04df06fa058f564655622e502b93fdf1710e31129a3e07c115a6adf"
+    },
+    {
+      "id": 11,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-06.png",
+      "path": "media/11-agent-factory-step-06.png",
+      "bytes": 176125,
+      "sha256": "167ff4bff0168a6d1c9b6d8fb7e5e0852d7ca89b30b71b9d6b4ca287a94f3882"
+    },
+    {
+      "id": 10,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-05.png",
+      "path": "media/10-agent-factory-step-05.png",
+      "bytes": 249577,
+      "sha256": "1c66420b54d1742c90a1c6547f6059db46bbcf369a937deea96382b7c5bf4850"
+    },
+    {
+      "id": 9,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-04.png",
+      "path": "media/9-agent-factory-step-04.png",
+      "bytes": 286227,
+      "sha256": "66fa387b3f24f0d26dfd546e9edb29dc582d1eb59c6123f52286deb8d633af53"
+    },
+    {
+      "id": 8,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-03.png",
+      "path": "media/8-agent-factory-step-03.png",
+      "bytes": 172884,
+      "sha256": "74e416953bc1bd3880cda15c3e7187fa5ac7d71de5fd6bca59abc6224faba29d"
+    },
+    {
+      "id": 7,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-02.png",
+      "path": "media/7-agent-factory-step-02.png",
+      "bytes": 211266,
+      "sha256": "08e5593da6a9cb003bead497d82a9e8ded5f6fb93fe9811fc688bde82ee5ce86"
+    },
+    {
+      "id": 6,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/agent-factory-step-01.png",
+      "path": "media/6-agent-factory-step-01.png",
+      "bytes": 152903,
+      "sha256": "a2ac253b3c18d352b1c759b75d6c31ab461ee994e8c531017f291131aa9060d8"
+    }
+  ],
+  "articleCount": 12,
+  "mediaCount": 148,
+  "mediaBytes": 42683522
+}
