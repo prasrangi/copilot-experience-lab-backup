@@ -1,0 +1,153 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Govern the Agent Factory Lifecycle with Power Platform Environment Groups</title><style>body{font:17px/1.65 system-ui,sans-serif;max-width:1000px;margin:32px auto;padding:0 20px;color:#172033}img{max-width:100%;height:auto}table{width:100%;table-layout:fixed;overflow-wrap:anywhere;border-collapse:collapse}th,td{border:1px solid #d8e0ec;padding:10px}pre{overflow:auto;background:#f4f7fb;padding:16px}blockquote{border-left:4px solid #155eef;padding:12px 20px;background:#eff6ff}summary{cursor:pointer;padding:12px;font-weight:700}figcaption{font-size:.85em;color:#526077}</style></head><body><nav><a href="../index.html">Backup index</a></nav><h1>Govern the Agent Factory Lifecycle with Power Platform Environment Groups</h1><p>Prashant Rangi · 2026-10-11T16:44:10 · publish</p><p>Categories: Copilot Studio, Copilot Studio &amp;amp; Agent Factory, Power Platform ALM<br>Tags: Agent Factory, Agent Governance, Copilot Studio</p><p>A working deployment pipeline answers one question: can the agent solution move from DEV through TEST to PROD? It does not decide who can edit an agent, which AI features are allowed, or whether someone can bypass the pipeline with an unmanaged change.</p>
+<p>This next part of the Agent Factory lab puts those controls around the environments. Power Platform environment groups let us manage lifecycle rules centrally, with room for development collaboration and tighter controls downstream.</p>
+<blockquote id="series-prerequisites"><p><strong>Complete these two runbooks first, in order:</strong></p>
+<ol>
+<li><a href="36-agent-factory-pilot-runbook.html">Part 1: Building an Agent Factory Pilot — From Copilot Studio Draft to Power Platform Pipeline</a>. Create the draft agent, solution, pipeline host, environment records, and deployment stages.</li>
+<li><a href="70-deploy-promote-pilot-agent-power-platform-pipeline.html">Part 2: Deploy and Promote the Pilot Agent Through the Power Platform Pipeline</a>. Validate the managed solution deployment into TEST and promotion to PROD.</li>
+</ol>
+<p>This article assumes those resources already exist. It adds governance to that lifecycle; it does not recreate the agent or deployment pipeline.</p></blockquote>
+<h2>What changes in this part?</h2>
+<p>The lab uses three lifecycle groups. Each environment goes into the group that matches its job:</p>
+<table>
+<thead>
+<tr>
+<th>Environment group</th>
+<th>Environment</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AF-LIFECYCLE-DEVELOPMENT</code></td>
+<td><code>AF-PILOT-DEV</code></td>
+<td>Agent development and controlled maker collaboration</td>
+</tr>
+<tr>
+<td><code>AF-LIFECYCLE-TEST</code></td>
+<td><code>AF-PILOT-TEST</code></td>
+<td>Validation and acceptance testing under downstream controls</td>
+</tr>
+<tr>
+<td><code>AF-LIFECYCLE-PRODUCTION</code></td>
+<td><code>AF-PILOT-PROD</code></td>
+<td>Production-oriented governance for the pilot</td>
+</tr>
+</tbody>
+</table>
+<nav aria-label="Article contents">
+<h2>In this walkthrough</h2>
+<ol>
+<li><a href="83-agent-factory-lifecycle-governance-environment-groups.html#lifecycle-groups">Check the lifecycle groups</a></li>
+<li><a href="83-agent-factory-lifecycle-governance-environment-groups.html#apply-group-rules">Configure rules and add environments</a></li>
+<li><a href="83-agent-factory-lifecycle-governance-environment-groups.html#development-policy">Keep development flexible, but controlled</a></li>
+<li><a href="83-agent-factory-lifecycle-governance-environment-groups.html#test-policy">Protect the TEST environment</a></li>
+<li><a href="83-agent-factory-lifecycle-governance-environment-groups.html#production-policy">Apply production-oriented controls</a></li>
+<li><a href="83-agent-factory-lifecycle-governance-environment-groups.html#governance-validation">Validate the effective governance</a></li>
+</ol>
+</nav>
+<details id="lifecycle-groups" open="">
+<summary><strong>1. Check the lifecycle groups before creating anything</strong></summary>
+<p>Open <strong>Power Platform admin center &gt; Manage &gt; Environment groups</strong></p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/74-lifecycle-governance-01.webp" target="_blank" rel="noopener"><img decoding="async" style="display: block; max-width: 100%; height: auto;" src="../media/74-lifecycle-governance-01.webp" alt="Lifecycle environment groups before environments or rules were added"></a><figcaption>Lifecycle environment groups before environments or rules were added.</figcaption></figure>
+<details>
+<summary><strong>If the environment groups do not exist, create them using the steps below</strong></summary>
+<ol>
+<li>Open Power Platform admin center and select <strong>Manage &gt; Environment groups</strong>.</li>
+<li>Select <strong>New group</strong>.</li>
+<li>Enter the lifecycle group name and a description that explains its purpose.</li>
+<li>Select <strong>Save</strong> and repeat for the other lifecycle groups that do not already exist.</li>
+</ol>
+</details>
+</details>
+<details id="apply-group-rules" open="open">
+<summary><strong>2. Configure the rules, then add each environment</strong></summary>
+<p>Configure the destination group&#8217;s rules before changing environment membership. That makes the policy that will take effect visible before the environment is added.</p>
+<ol>
+<li>Open <strong>Manage &gt; Environment groups</strong> and select the destination group.</li>
+<li>Open <strong>Rules</strong> and select <strong>Add rules</strong>.</li>
+<li>Select the required rules, configure their values, and save each one.</li>
+<li>Select <strong>Apply changes</strong> and wait for confirmation.</li>
+<li>Open the group&#8217;s <strong>Environments</strong> tab and select <strong>Add environments</strong>.</li>
+<li>Search for the exact environment name. Check its type, region, Dataverse status, Managed status, and current group before selecting it.</li>
+<li>Select <strong>Add environments</strong>. If prompted, enable Managed Environments after reviewing the implications.</li>
+<li>Wait for processing to finish before checking the result.</li>
+</ol>
+<p>Repeat for DEV, TEST, and PROD using the mapping above.</p>
+</details>
+<details id="development-policy">
+<summary><strong>3. Keep development flexible, but controlled</strong></summary>
+<p><code>AF-LIFECYCLE-DEVELOPMENT</code> is where makers build and change the agent.</p>
+<h4>AF-PILOT-DEV — Rules</h4>
+<ul class="environment-rules">
+<li><strong>Backup retention: </strong>Effective retention: seven days, because DEV is Sandbox-type</li>
+<li><strong>Default deployment pipeline: </strong>Host: <code>AF-PILOT-HOST</code>; pipeline: <code>AF-PILOT-Standard-Release</code></li>
+<li><strong>Generative AI settings: </strong>Existing approved/default configuration retained</li>
+<li><strong>Agent sharing with Editor permissions: </strong>Enabled for development collaboration</li>
+<li><strong>Agent sharing with Viewer permissions: </strong>Enabled</li>
+<li><strong>Solution checker enforcement: </strong>Warn</li>
+<li><strong>Usage insights: </strong>Enabled</li>
+</ul>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/77-lifecycle-governance-04.webp" target="_blank" rel="noopener"><img decoding="async" style="display: block; max-width: 100%; height: auto;" src="../media/77-lifecycle-governance-04.webp" alt="Seven configured rules marked Applied in AF-LIFECYCLE-DEVELOPMENT."></a><figcaption>Seven configured rules marked Applied in AF-LIFECYCLE-DEVELOPMENT.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/75-lifecycle-governance-02.webp" target="_blank" rel="noopener"><img decoding="async" style="display: block; max-width: 100%; height: auto;" src="../media/75-lifecycle-governance-02.webp" alt="DEV lifecycle group environment membership"></a><figcaption>DEV lifecycle group environment membership.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/76-lifecycle-governance-03.webp" target="_blank" rel="noopener"><img decoding="async" style="display: block; max-width: 100%; height: auto;" src="../media/76-lifecycle-governance-03.webp" alt="DEV lifecycle group configuration"></a><figcaption>DEV lifecycle group configuration.</figcaption></figure>
+</details>
+<details id="test-policy">
+<summary><strong>4. Protect TEST from direct changes</strong></summary>
+<p><code>AF-LIFECYCLE-TEST</code> should validate what the pipeline delivered.</p>
+<h4>AF-PILOT-TEST — Rules</h4>
+<ul class="environment-rules">
+<li><strong>Conversation transcript access: </strong>Rule applied with its default configuration; review access and retention against the privacy policy before real user testing</li>
+<li><strong>AI prompts: </strong>Enabled using the rule&#8217;s default configuration</li>
+<li><strong>Authentication for agents: </strong>Microsoft Entra authentication required</li>
+<li><strong>Backup retention: </strong>Seven days, because TEST is Sandbox-type</li>
+<li><strong>Generative AI settings: </strong>Existing approved/default configuration retained</li>
+<li><strong>Preview and experimental AI models: </strong>Disabled</li>
+<li><strong>Agent sharing with Editor permissions: </strong>Disabled</li>
+<li><strong>Agent sharing with Viewer permissions: </strong>Enabled; individuals and security groups permitted, with no numerical viewer limit imposed</li>
+<li><strong>Sharing solution-aware cloud flows: </strong>Maker sharing disabled</li>
+<li><strong>Solution checker enforcement: </strong>Block; imports containing critical violations are blocked</li>
+<li><strong>Unmanaged customizations: </strong>Blocked; change the agent in DEV and promote it through the pipeline</li>
+<li><strong>Usage insights: </strong>Enabled using the rule&#8217;s default configuration</li>
+</ul>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/80-lifecycle-governance-07.webp" target="_blank" rel="noopener"><img decoding="async" style="display: block; max-width: 100%; height: auto;" src="../media/80-lifecycle-governance-07.webp" alt="Twelve rules marked Applied in AF-LIFECYCLE-TEST."></a><figcaption>Twelve rules marked Applied in AF-LIFECYCLE-TEST.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/78-lifecycle-governance-05.webp" target="_blank" rel="noopener"><img decoding="async" style="display: block; max-width: 100%; height: auto;" src="../media/78-lifecycle-governance-05.webp" alt="TEST lifecycle group environment membership"></a><figcaption>TEST lifecycle group environment membership.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/79-lifecycle-governance-06.webp" target="_blank" rel="noopener"><img decoding="async" style="display: block; max-width: 100%; height: auto;" src="../media/79-lifecycle-governance-06.webp" alt="Applied rules in the TEST lifecycle group"></a><figcaption>Applied rules in the TEST lifecycle group.</figcaption></figure>
+<p>Solution Checker Block mode is not an overall security certification. Review which violations it blocks, inspect results, and retain the deployment checks from Part 2. Authentication, sharing, and transcript access need their own validation.</p>
+</details>
+<details id="production-policy">
+<summary><strong>5. Apply production-oriented controls without overstating readiness</strong></summary>
+<p><code>AF-LIFECYCLE-PRODUCTION</code> records the stricter downstream baseline.</p>
+<h3>AF-PILOT-PROD — Rules</h3>
+<ul class="environment-rules">
+<li><strong>Conversation transcript access: </strong>Rule applied with default configuration; for real production, restrict visibility to approved support and compliance roles</li>
+<li><strong>AI prompts: </strong>Enabled using the rule&#8217;s default configuration</li>
+<li><strong>Authentication for agents: </strong>Microsoft Entra authentication required</li>
+<li><strong>Backup retention: </strong>Currently seven days because <code>AF-PILOT-PROD</code> is Sandbox-type; a Production-type Managed Environment can support longer retention, subject to applicable limits</li>
+<li><strong>Generative AI settings: </strong>Existing approved/default configuration retained</li>
+<li><strong>Preview and experimental AI models: </strong>Disabled</li>
+<li><strong>Agent sharing with Editor permissions: </strong>Disabled</li>
+<li><strong>Agent sharing with Viewer permissions: </strong>Enabled; individuals and security groups permitted. Use a controlled pilot-user security group</li>
+<li><strong>Sharing solution-aware cloud flows: </strong>Maker sharing disabled</li>
+<li><strong>Solution checker enforcement: </strong>Block</li>
+<li><strong>Unmanaged customizations: </strong>Blocked</li>
+<li><strong>Usage insights: </strong>Enabled using the rule&#8217;s default configuration</li>
+</ul>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/81-lifecycle-governance-08.webp" target="_blank" rel="noopener"><img decoding="async" style="display: block; max-width: 100%; height: auto;" src="../media/81-lifecycle-governance-08.webp" alt="Twelve rules marked Applied in AF-LIFECYCLE-PRODUCTION."></a><figcaption></figcaption></figure>
+</details>
+<p>&nbsp;</p>
+<section id="agent-factory-outcome-summary">
+<h2>Summary: What We Achieved and How It Supports an Agent Factory</h2>
+<p>Across this guide and the two earlier runbooks, the pilot now has an agent, a validated DEV-to-TEST-to-PROD deployment path, and a lifecycle governance baseline. Environment groups add consistent controls around that release process rather than leaving each environment to be managed independently.</p>
+<h3>What we achieved</h3>
+<ul>
+<li><strong>Separated the lifecycle:</strong> Defined DEVELOPMENT, TEST, and PRODUCTION groups for the corresponding pilot environments, with different responsibilities for building, validating, and operating agents.</li>
+<li><strong>Established the DEV baseline:</strong> Recorded seven configured rules covering backups, the default deployment pipeline, generative AI settings, editor and viewer sharing, Solution Checker in Warn mode, and usage insights.</li>
+<li><strong>Strengthened the downstream baseline:</strong> Recorded twelve rules for both TEST and PROD, including Microsoft Entra authentication, disabled experimental AI models, tighter sharing controls, blocked unmanaged customizations, and Solution Checker in Block mode.</li>
+<li><strong>Connected governance to delivery:</strong> Linked the development baseline to <code>AF-PILOT-HOST</code> and <code>AF-PILOT-Standard-Release</code>, keeping agent changes aligned with the deployment process established in Parts 1 and 2.</li>
+</ul>
+<h3>How this helps build an Agent Factory</h3>
+<p>An Agent Factory needs a repeatable way to build and release agents without recreating governance for every project. These lifecycle groups provide a starting point: makers work within the development baseline, downstream environments use stricter controls, and additional eligible environments can adopt the relevant published group rules after review.</p>
+<p>Centralizing those rules reduces manual configuration drift and gives platform owners a clearer place to maintain lifecycle policy. Combined with the solution and pipeline, the setup creates a reusable foundation for onboarding more agent projects while keeping development, validation, and release responsibilities distinct.</p>
+<p>This is a governed pilot foundation, not a production-readiness certification. Existing access assignments, transcript privacy, effective permissions, and agent evaluation still require validation. The current PROD pilot is Sandbox-type with seven-day backup retention; production deployment and publication need their own approved decisions.</p>
+</section>
+</body></html>

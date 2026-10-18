@@ -1,0 +1,340 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Building an Agent Factory Pilot: From Copilot Studio Draft to Power Platform Pipeline</title><style>body{font:17px/1.65 system-ui,sans-serif;max-width:1000px;margin:32px auto;padding:0 20px;color:#172033}img{max-width:100%;height:auto}table{width:100%;table-layout:fixed;overflow-wrap:anywhere;border-collapse:collapse}th,td{border:1px solid #d8e0ec;padding:10px}pre{overflow:auto;background:#f4f7fb;padding:16px}blockquote{border-left:4px solid #155eef;padding:12px 20px;background:#eff6ff}summary{cursor:pointer;padding:12px;font-weight:700}figcaption{font-size:.85em;color:#526077}</style></head><body><nav><a href="../index.html">Backup index</a></nav><h1>Building an Agent Factory Pilot: From Copilot Studio Draft to Power Platform Pipeline</h1><p>Prashant Rangi · 2026-10-10T09:42:18 · publish</p><p>Categories: Copilot Studio, Copilot Studio &amp;amp; Agent Factory, Power Platform ALM<br>Tags: Agent Factory, Copilot Studio, Deployment Pipelines, Power Platform ALM</p><p>This runbook covers the full Agent Factory pilot path: create a draft Copilot Studio agent in DEV, move it to TEST as a managed solution, and configure a Power Platform pipeline for future TEST and PROD deployments.</p>
+<p>The instructions use the lab resources shown below. Keep the names consistent; the pipeline and validation steps depend on them.</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Lab value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Development environment</td>
+<td><code>AF-PILOT-DEV</code></td>
+</tr>
+<tr>
+<td>Test environment</td>
+<td><code>AF-PILOT-TEST</code></td>
+</tr>
+<tr>
+<td>Production environment</td>
+<td><code>AF-PILOT-PROD</code></td>
+</tr>
+<tr>
+<td>Solution</td>
+<td><code>AF Pilot Agent</code></td>
+</tr>
+<tr>
+<td>Agent</td>
+<td><code>AF-PILOT-DEV-Assistant</code></td>
+</tr>
+<tr>
+<td>Pipeline host</td>
+<td><code>AF-PILOT-HOST</code></td>
+</tr>
+<tr>
+<td>Deployment pipeline</td>
+<td><code>AF-PILOT-Standard-Release</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Lab scope:</strong> The agent stays in draft throughout this exercise. Publishing the Dataverse customizations before export does not publish the agent or make it available to users.</p>
+</blockquote>
+<h2>Before you begin</h2>
+<ul>
+<li>Use an authorized LAB account with access to Copilot Studio, Power Apps, and Power Platform admin center.</li>
+<li>Confirm that the DEV, TEST, and PROD environments already exist in the same region and include Dataverse.</li>
+<li>Use a private or Incognito browser window to avoid switching into the wrong tenant or cached account.</li>
+<li>Do not add knowledge sources, connectors, tools, workflows, or actions during this initial pilot.</li>
+</ul>
+<nav aria-label="Article contents">
+<h2>Contents</h2>
+<ol>
+<li><a href="36-agent-factory-pilot-runbook.html#preferred-solution">Set the preferred solution</a></li>
+<li><a href="36-agent-factory-pilot-runbook.html#create-agent">Create the pilot agent</a></li>
+<li><a href="36-agent-factory-pilot-runbook.html#promote-test">Promote the managed solution to TEST</a></li>
+<li><a href="36-agent-factory-pilot-runbook.html#pipeline-host">Create the pipeline host</a></li>
+<li><a href="36-agent-factory-pilot-runbook.html#deployment-pipeline">Create the deployment pipeline</a></li>
+<li><a href="36-agent-factory-pilot-runbook.html#deployment-environments">Create and link deployment environments</a></li>
+<li><a href="36-agent-factory-pilot-runbook.html#test-stage">Create the TEST stage</a></li>
+<li><a href="36-agent-factory-pilot-runbook.html#prod-stage">Create the PROD stage</a></li>
+</ol>
+</nav>
+<details id="preferred-solution" open="">
+<summary><strong>1. Set the preferred solution</strong></summary>
+<p>Start by making the unmanaged <strong>AF Pilot Agent</strong> solution the preferred solution in DEV. This ensures that the components created during the lab are added to the correct solution instead of the default solution.</p>
+<ol>
+<li>Open a new InPrivate or Incognito browser window.</li>
+<li>Go to <a href="https://make.powerapps.com" target="_blank" rel="noopener">make.powerapps.com</a> and sign in with your LAB account.</li>
+<li>Switch to the <strong>AF-PILOT-DEV</strong> environment.</li>
+<li>Open <strong>Solutions</strong>, then select the unmanaged <strong>AF Pilot Agent</strong> solution.</li>
+<li>Select <strong>Set preferred solution</strong> on the command bar.</li>
+<li>Confirm that the preferred-solution indicator appears.</li>
+</ol>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/6-agent-factory-step-01.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/6-agent-factory-step-01.png" alt="Preferred solution indicator for the AF Pilot Agent solution" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">AF Pilot Agent selected as the preferred solution in the DEV environment.</figcaption></figure>
+<p><strong>Checkpoint:</strong> <code>AF Pilot Agent</code> is marked as the preferred solution in <code>AF-PILOT-DEV</code>.</p>
+</details>
+<details id="create-agent">
+<summary><strong>2. Create the pilot agent</strong></summary>
+<p>Next, create the agent shell in Copilot Studio. At this point, the goal is to establish the component, naming, solution ownership, and instructions. Leave integrations and publishing for a later phase.</p>
+<ol>
+<li>In Copilot Studio, select <strong>Agents &gt; New agent &gt; Create blank agent</strong>.</li>
+<li>Name the agent <code>AF-PILOT-DEV-Assistant</code>.</li>
+<li>Open <strong>Advanced settings</strong> before saving and explicitly select <strong>AF Pilot Agent</strong> as the solution.</li>
+<li>Keep the primary language as <strong>English (United States)</strong>.</li>
+<li>Create the agent, but do not add knowledge, tools, or integrations, and do not publish it.</li>
+</ol>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/7-agent-factory-step-02.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/7-agent-factory-step-02.png" alt="Copilot Studio draft agent configuration for AF-PILOT-DEV-Assistant" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">The pilot agent created in Copilot Studio and associated with the lab solution.</figcaption></figure>
+<details>
+<summary><strong>Agent creation prompt</strong></summary>
+<p>Use the following prompt if the agent shell is being created through the GitHub Copilot harness.</p>
+<pre><code>Create one draft autonomous agent using the GitHub Copilot harness with these specifications:
+
+Agent name: AF-PILOT-DEV-Assistant
+Environment: AF-PILOT-DEV
+Existing solution: AF Pilot Agent
+Primary language: English (United States)
+
+Purpose:
+Act as an internal Agent Factory lab assistant for authorized pilot users. Help users understand the lab deployment process, naming standards, validation checkpoints, testing steps, and safe troubleshooting procedures.
+
+Behavior:
+- Give concise, accurate, step-by-step answers.
+- Ask a clarifying question when required information is missing.
+- Clearly distinguish confirmed information from assumptions.
+- Do not invent tenant configuration, test results, policies, users, or business data.
+- Do not make administrative changes or modify tenant resources.
+- Do not access, expose, or request secrets, credentials, authentication codes, or sensitive personal data.
+- Recommend human review before any production, publishing, security, access, or governance change.
+- When a request is outside the agent's available information, explain the limitation and recommend the appropriate administrator or owner.
+
+For this initial pilot:
+- Create only the draft agent shell and its instructions.
+- Use the existing "AF Pilot Agent" solution.
+- Do not create another environment or solution.
+- Do not use or modify any existing agent.
+- Do not add knowledge sources, connectors, tools, workflows, actions, or external integrations.
+- Do not publish, deploy, share, or enable the agent.
+- If the existing solution cannot be selected automatically, pause and ask me to select it rather than using a default solution.
+
+After creating the draft, summarize the agent name, harness, environment, selected solution, schema name, and whether anything was published.</code></pre>
+</details>
+<p><strong>Checkpoint:</strong> The draft agent exists in <code>AF-PILOT-DEV</code>, belongs to <code>AF Pilot Agent</code>, and remains unpublished.</p>
+</details>
+<details id="promote-test">
+<summary><strong>3. Promote the managed solution from DEV to TEST</strong></summary>
+<p>The next step validates the basic application lifecycle management path. Export the solution from DEV as managed, import it into TEST, and confirm that the agent arrives with its instructions and guardrails intact.</p>
+<h3>Export from DEV</h3>
+<ol>
+<li>Leave the evaluation page without saving an evaluation. Evaluation is not required for this stage of the pilot.</li>
+<li>In <code>AF-PILOT-DEV</code>, open <strong>Solutions &gt; AF Pilot Agent</strong>.</li>
+<li>Confirm that <strong>Objects &gt; Agents</strong> contains <code>AF-PILOT-DEV-Assistant</code>.</li>
+<li>Select <strong>Export solution</strong>.</li>
+</ol>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/8-agent-factory-step-03.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/8-agent-factory-step-03.png" alt="Export solution command for AF Pilot Agent in the DEV environment" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Starting the solution export from the DEV environment.</figcaption></figure>
+<p>Under <strong>Before you export</strong>, select <strong>Publish all changes</strong>, then select <strong>Next</strong>. This publishes Dataverse customizations into the export package. It does not publish the Copilot Studio agent to users.</p>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/9-agent-factory-step-04.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/9-agent-factory-step-04.png" alt="Publish all changes step before exporting the solution" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Publishing solution customizations before export.</figcaption></figure>
+<p>Configure the package as follows:</p>
+<ul>
+<li><strong>Version:</strong> <code>1.0.0.1</code></li>
+<li><strong>Export as:</strong> Managed</li>
+</ul>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/10-agent-factory-step-05.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/10-agent-factory-step-05.png" alt="Managed solution export version settings" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Setting the solution version and managed package type.</figcaption></figure>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/11-agent-factory-step-06.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/11-agent-factory-step-06.png" alt="Solution export confirmation screen" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Reviewing the export settings before creating the package.</figcaption></figure>
+<p>Complete the export and download the resulting ZIP package.</p>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/12-agent-factory-step-07.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/12-agent-factory-step-07.png" alt="Download control for the exported managed solution" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Downloading the managed solution package.</figcaption></figure>
+<h3>Import into TEST</h3>
+<ol>
+<li>Switch Copilot Studio to <code>AF-PILOT-TEST</code>.</li>
+<li>Open <strong>Solutions</strong>, then select <strong>Import solution</strong>.</li>
+</ol>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/13-agent-factory-step-08.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/13-agent-factory-step-08.png" alt="Import solution command in the TEST environment" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Starting the solution import in TEST.</figcaption></figure>
+<ol start="3">
+<li>Select <strong>This device &gt; Browse</strong> and choose the managed ZIP file.</li>
+<li>Select <strong>Next</strong>. If prompted for environment variables or connections, use TEST-specific values.</li>
+</ol>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/14-agent-factory-step-09.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/14-agent-factory-step-09.png" alt="File selection step for the managed solution package" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Selecting the managed solution package from the local device.</figcaption></figure>
+<p>Review the import summary, then select <strong>Import</strong>.</p>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/15-agent-factory-step-10.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/15-agent-factory-step-10.png" alt="Import confirmation for the managed solution" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Confirming the managed solution import.</figcaption></figure>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/16-agent-factory-step-11.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/16-agent-factory-step-11.png" alt="Successful managed solution import in TEST" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">The managed solution available in the TEST environment.</figcaption></figure>
+<p>After the import succeeds, open <strong>AF Pilot Agent</strong> in TEST and confirm:</p>
+<ul>
+<li>The package type is <strong>Managed</strong>.</li>
+<li><strong>Agents (1)</strong> is present.</li>
+<li>The pilot agent opens without errors.</li>
+<li>The instructions and guardrails were retained.</li>
+<li>The agent remains unpublished.</li>
+</ul>
+<p><strong>Checkpoint:</strong> The managed solution and draft agent are available in TEST, with no agent published to users.</p>
+</details>
+<details id="pipeline-host">
+<summary><strong>4. Create the pipeline host</strong></summary>
+<p>Power Platform Pipelines needs a host environment where the deployment configuration is stored. Create a dedicated production-type host in the same region as the participating environments.</p>
+<ol>
+<li>Open <strong>Power Platform admin center &gt; Deployments</strong>.</li>
+<li>Select <strong>New custom host</strong>.</li>
+</ol>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/17-agent-factory-step-12.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/17-agent-factory-step-12.png" alt="New custom host command in Power Platform admin center" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Creating a custom pipeline host.</figcaption></figure>
+<p>Use the following values:</p>
+<ul>
+<li><strong>Name:</strong> <code>AF-PILOT-HOST</code></li>
+<li><strong>Type:</strong> Production</li>
+<li><strong>Region:</strong> The same region as DEV, TEST, and PROD</li>
+<li><strong>Dataverse:</strong> Yes</li>
+</ul>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/18-agent-factory-step-13.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/18-agent-factory-step-13.png" alt="Custom host configuration for AF-PILOT-HOST" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Configuration values for the Agent Factory pipeline host.</figcaption></figure>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/19-agent-factory-step-14.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/19-agent-factory-step-14.png" alt="Provisioned custom host with Dataverse enabled" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">The custom host after provisioning.</figcaption></figure>
+<p>Wait for the environment and the Power Platform Pipelines application installation to finish before continuing.</p>
+</details>
+<details id="deployment-pipeline">
+<summary><strong>5. Create the deployment pipeline</strong></summary>
+<p>Once the host is ready, create the release pipeline that will connect the Agent Factory development environment to its downstream targets.</p>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/20-agent-factory-step-15.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/20-agent-factory-step-15.png" alt="Pipelines navigation for creating a deployment pipeline" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Opening the Pipelines configuration area.</figcaption></figure>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/21-agent-factory-step-16.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/21-agent-factory-step-16.png" alt="Quick Create form for a deployment pipeline" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">The Quick Create form for a new deployment pipeline.</figcaption></figure>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/22-agent-factory-step-17.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/22-agent-factory-step-17.png" alt="Deployment pipeline setup screen" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Initial pipeline configuration.</figcaption></figure>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/23-agent-factory-step-18.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/23-agent-factory-step-18.png" alt="Deployment pipeline details form" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Deployment pipeline details.</figcaption></figure>
+<p>Enter:</p>
+<ul>
+<li><strong>Name:</strong> <code>AF-PILOT-Standard-Release</code></li>
+<li><strong>Description:</strong> Managed solution deployment from DEV through TEST to PROD</li>
+</ul>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/24-agent-factory-step-19.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/24-agent-factory-step-19.png" alt="Completed AF-PILOT-Standard-Release pipeline details" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">The completed pipeline record.</figcaption></figure>
+<p>Select <strong>Save and Close</strong>, then confirm that the pipeline appears in the Pipelines list.</p>
+</details>
+<details id="deployment-environments">
+<summary><strong>6. Create and link the deployment environments</strong></summary>
+<p>The pipeline uses deployment-environment records to identify its development source and downstream targets. Start with DEV, then make sure TEST and PROD are also represented.</p>
+<h3>Create the DEV record</h3>
+<ol>
+<li>In the open development-environment lookup, select <strong>New</strong>.</li>
+<li>Enter the following values:
+<ul>
+<li><strong>Name:</strong> <code>AF-PILOT-DEV</code></li>
+<li><strong>Environment type:</strong> Development Environment</li>
+<li><strong>Environment ID:</strong> <code>a4638d0d-888a-e392-953f-76a41cc533f4</code></li>
+<li><strong>Description:</strong> Agent Factory pilot development environment</li>
+</ul>
+</li>
+<li>Select <strong>Save and Close</strong>.</li>
+<li>Back in the lookup, select <code>AF-PILOT-DEV</code>, then select <strong>Add</strong>.</li>
+<li>Confirm that it appears under <strong>Linked Development Environments</strong> with <strong>Validation Status = Success</strong>.</li>
+</ol>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/25-agent-factory-step-20.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/25-agent-factory-step-20.png" alt="New deployment environment lookup for DEV" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Creating the missing DEV deployment-environment record.</figcaption></figure>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/26-agent-factory-step-21.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/26-agent-factory-step-21.png" alt="AF-PILOT-DEV deployment environment configuration" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">The DEV deployment-environment configuration.</figcaption></figure>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/27-agent-factory-step-22.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/27-agent-factory-step-22.png" alt="Linked development environment validation success" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">The linked DEV environment after successful validation.</figcaption></figure>
+<h3>Required environment records</h3>
+<table>
+<thead>
+<tr>
+<th>Record</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AF-PILOT-DEV</code></td>
+<td>Development Environment</td>
+</tr>
+<tr>
+<td><code>AF-PILOT-TEST</code></td>
+<td>Target Environment</td>
+</tr>
+<tr>
+<td><code>AF-PILOT-PROD</code></td>
+<td>Target Environment</td>
+</tr>
+</tbody>
+</table>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/28-agent-factory-step-23.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/28-agent-factory-step-23.png" alt="Deployment environment records for DEV, TEST, and PROD" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">The deployment-environment records required by the release pipeline.</figcaption></figure>
+</details>
+<details id="test-stage">
+<summary><strong>7. Create the TEST deployment stage</strong></summary>
+<ol>
+<li>Select <strong>Pipelines</strong> from the left navigation.</li>
+<li>Open <code>AF-PILOT-Standard-Release</code>.</li>
+<li>Under <strong>Deployment Stages</strong>, select <strong>New Deployment Stage</strong>.</li>
+</ol>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/29-agent-factory-step-24.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/29-agent-factory-step-24.png" alt="New deployment stage command for the release pipeline" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Adding the first deployment stage to the pipeline.</figcaption></figure>
+<p>Configure the stage as follows:</p>
+<ul>
+<li><strong>Name:</strong> <code>Deploy to TEST</code></li>
+<li><strong>Deployment Pipeline:</strong> <code>AF-PILOT-Standard-Release</code></li>
+<li><strong>Target Deployment Environment:</strong> <code>AF-PILOT-TEST</code></li>
+<li><strong>Previous Deployment Stage:</strong> Leave blank</li>
+<li><strong>Pre-Deployment Step Required:</strong> No</li>
+<li><strong>Is Delegated Deployment:</strong> No</li>
+</ul>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/30-agent-factory-step-25.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/30-agent-factory-step-25.png" alt="Deploy to TEST stage configuration" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Configuration for the TEST deployment stage.</figcaption></figure>
+<p>Select <strong>Save and Close</strong>, then confirm that <strong>Deploy to TEST</strong> appears under Deployment Stages.</p>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/31-agent-factory-step-26.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/31-agent-factory-step-26.png" alt="Deploy to TEST stage listed in the pipeline" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">The TEST stage added to the release pipeline.</figcaption></figure>
+</details>
+<details id="prod-stage">
+<summary><strong>8. Create the PROD deployment stage</strong></summary>
+<p>The PROD stage follows TEST, which establishes the intended promotion order without enabling deployment automation or delegated deployment yet.</p>
+<ol>
+<li>Confirm that <strong>Deploy to TEST</strong> appears under Deployment Stages.</li>
+<li>Select <strong>New Deployment Stage</strong>.</li>
+<li>Configure the stage:
+<ul>
+<li><strong>Name:</strong> <code>Deploy to PROD</code></li>
+<li><strong>Deployment Pipeline:</strong> <code>AF-PILOT-Standard-Release</code></li>
+<li><strong>Previous Deployment Stage:</strong> <code>Deploy to TEST</code></li>
+<li><strong>Target Deployment Environment:</strong> <code>AF-PILOT-PROD</code></li>
+<li><strong>Pre-Export Step Required:</strong> Unchecked</li>
+<li><strong>Pre-Deployment Step Required:</strong> Unchecked for now</li>
+<li><strong>Is Delegated Deployment:</strong> Unchecked</li>
+</ul>
+</li>
+<li>Select <strong>Save and Close</strong>.</li>
+</ol>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/32-agent-factory-step-27.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/32-agent-factory-step-27.png" alt="Deploy to PROD stage configuration" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">Configuration for the PROD deployment stage.</figcaption></figure>
+<figure class="runbook-screenshot" style="max-width: 900px; margin: 1.5rem auto;">
+    <a href="../media/33-agent-factory-step-28.png" target="_blank" rel="noopener" title="Open full-size screenshot"><img src="../media/33-agent-factory-step-28.png" alt="Completed TEST and PROD deployment stages" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;"></a><figcaption style="text-align: center;">The completed TEST-to-PROD stage sequence.</figcaption></figure>
+<p><strong>Checkpoint:</strong> The pipeline contains a TEST stage followed by a PROD stage. No pre-deployment step or delegated deployment is enabled.</p>
+</details>
+<h2>Final validation</h2>
+<ul>
+<li><code>AF Pilot Agent</code> is the preferred solution in DEV.</li>
+<li><code>AF-PILOT-DEV-Assistant</code> exists as an unpublished draft.</li>
+<li>Managed solution version <code>1.0.0.1</code> was imported successfully into TEST.</li>
+<li>The agent instructions and guardrails are present in TEST.</li>
+<li><code>AF-PILOT-HOST</code> is provisioned with Dataverse.</li>
+<li><code>AF-PILOT-Standard-Release</code> contains linked DEV, TEST, and PROD environments.</li>
+<li>The pipeline includes <strong>Deploy to TEST</strong> followed by <strong>Deploy to PROD</strong>.</li>
+<li>Nothing in this runbook publishes the agent to end users.</li>
+</ul>
+<blockquote>
+<p><strong>Production note:</strong> Treat publishing, security, sharing, connector configuration, delegated deployment, and governance changes as separate reviewed activities. The pilot deliberately stops before those actions.</p>
+</blockquote>
+<blockquote id="series-next">
+<p><strong>Continue to Part 2:</strong> Once the agent and pipeline setup above are complete, follow <a href="70-deploy-promote-pilot-agent-power-platform-pipeline.html">Deploy and Promote the Pilot Agent Through the Power Platform Pipeline</a> to deploy version 1.0.0.3 to TEST, verify the managed solution, and promote the same release to PROD.</p>
+</blockquote>
+</body></html>

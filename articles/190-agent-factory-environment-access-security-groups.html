@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Governing Agent Factory Access with Environment Security Groups</title><style>body{font:17px/1.65 system-ui,sans-serif;max-width:1000px;margin:32px auto;padding:0 20px;color:#172033}img{max-width:100%;height:auto}table{width:100%;table-layout:fixed;overflow-wrap:anywhere;border-collapse:collapse}th,td{border:1px solid #d8e0ec;padding:10px}pre{overflow:auto;background:#f4f7fb;padding:16px}blockquote{border-left:4px solid #155eef;padding:12px 20px;background:#eff6ff}summary{cursor:pointer;padding:12px;font-weight:700}figcaption{font-size:.85em;color:#526077}</style></head><body><nav><a href="../index.html">Backup index</a></nav><h1>Governing Agent Factory Access with Environment Security Groups</h1><p>Prashant Rangi · 2026-10-15T09:09:15 · publish</p><p>Categories: Copilot Studio, Copilot Studio &amp;amp; Agent Factory<br>Tags: Access Control, Agent Factory, Agent Governance, Copilot Studio</p><h2>Introduction</h2>
+<p>An environment security group is a Microsoft Entra security group associated with a Power Platform environment. It defines the tenant users who are eligible to enter that environment. In an Agent Factory, this boundary prevents broad access from following agents across development, testing, and production and supports consistent separation of duties.</p>
+<h2>Step by Step Configuration</h2>
+<h3>Step 1 Create persona-based security groups</h3>
+<p>In Microsoft Entra admin center, create assigned-membership security groups for makers, testers, production end users, and production approvers. Add accountable owners and only the users who need that persona.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/181-environment-access-01.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/181-environment-access-01.png" alt="Figure 1 — Enter the group name, assign an owner and member, then select Create." width="1672" height="941"></a><figcaption>Figure 1 — Enter the group name, assign an owner and member, then select Create.</figcaption></figure>
+<h3>Step 2 Open each lifecycle environment</h3>
+<p>In Power Platform admin center, go to Manage &gt; Environments. Open the development, test, and production environments one at a time. Use distinct groups so access cannot drift between lifecycle stages.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/182-environment-access-02.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/182-environment-access-02.png" alt="Figure 2 — Open DEV, TEST, and PROD individually to apply the appropriate access boundary." width="1426" height="1103"></a><figcaption>Figure 2 — Open DEV, TEST, and PROD individually to apply the appropriate access boundary.</figcaption></figure>
+<h3>Step 3 Edit the environment security group</h3>
+<p>On the environment details page, select Edit, choose Edit security group, select the approved group, select Done, and then save the environment details. Repeat the same sequence for DEV and TEST with their corresponding groups.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/183-environment-access-03.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/183-environment-access-03.png" alt="Figure 3 — Select the production end-user group and confirm with Done." width="1482" height="1062"></a><figcaption>Figure 3 — Select the production end-user group and confirm with Done.</figcaption></figure>
+<h2>Validation</h2>
+<p>The environment details now show the intended access boundary:</p>
+<ul>
+<li>AF-PILOT-DEV → SG-AF-DEV-Makers</li>
+<li>AF-PILOT-TEST → SG-AF-TEST-Testers</li>
+<li>AF-PILOT-PROD → SG-AF-PROD-EndUsers</li>
+<li>The production approver group remains a separate approval persona rather than the PROD user boundary.</li>
+</ul>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/184-environment-access-04.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/184-environment-access-04.png" alt="Figure 4 — PROD validation: the environment is associated with SG-AF-PROD-EndUsers." width="1482" height="1062"></a><figcaption>Figure 4 — PROD validation: the environment is associated with SG-AF-PROD-EndUsers.</figcaption></figure>
+<table style="display: table; table-layout: fixed; width: 100%; white-space: normal; overflow-wrap: anywhere;">
+<tbody>
+<tr>
+<td><strong>Lab completion: </strong>The persona groups and DEV, TEST, and PROD environment boundaries are configured and validated for this Agent Factory lab. A production rollout should still use separate named personas and validate Dataverse roles, agent/app sharing, approval membership, and negative-access tests.</td>
+</tr>
+</tbody>
+</table>
+<h2>Why This Is Relevant for Agent Factory</h2>
+<ul>
+<li>Separates build, test, approval, and consumption responsibilities.</li>
+<li>Prevents production access from being inherited simply because someone can build in DEV.</li>
+<li>Makes onboarding and removal auditable through Entra group membership.</li>
+<li>Supports repeatable access rules as more agents and environments are added.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Environment security groups provide the first identity boundary for a governed Agent Factory. Used with Dataverse roles, app sharing, pipeline teams, and approval controls, they create a scalable least-privilege model across the complete agent lifecycle.</p>
+</body></html>

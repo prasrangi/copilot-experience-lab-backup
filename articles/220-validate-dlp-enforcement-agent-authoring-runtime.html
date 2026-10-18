@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Validate DLP Enforcement Across Agent Authoring and Runtime</title><style>body{font:17px/1.65 system-ui,sans-serif;max-width:1000px;margin:32px auto;padding:0 20px;color:#172033}img{max-width:100%;height:auto}table{width:100%;table-layout:fixed;overflow-wrap:anywhere;border-collapse:collapse}th,td{border:1px solid #d8e0ec;padding:10px}pre{overflow:auto;background:#f4f7fb;padding:16px}blockquote{border-left:4px solid #155eef;padding:12px 20px;background:#eff6ff}summary{cursor:pointer;padding:12px;font-weight:700}figcaption{font-size:.85em;color:#526077}</style></head><body><nav><a href="../index.html">Backup index</a></nav><h1>Validate DLP Enforcement Across Agent Authoring and Runtime</h1><p>Prashant Rangi · 2026-10-15T15:11:16 · publish</p><p>Categories: Copilot Studio, Copilot Studio &amp;amp; Agent Factory<br>Tags: Agent Factory, Agent Governance, Copilot Studio</p><h2>Introduction</h2>
+<p>Data loss prevention (DLP) enforcement is the practical proof that a policy is working, not merely configured. Authoring-time enforcement should stop a maker from selecting or publishing a prohibited capability. Runtime enforcement should ensure that a published agent cannot use a connector, endpoint, trigger, knowledge source, channel, or MCP server that policy does not allow.</p>
+<p>For an Agent Factory, both checks matter because agents are promoted through repeatable lifecycle stages. A governance baseline is credible only when it constrains what makers can add and what deployed workloads can execute. This article uses one continuous validation block to test both control points without changing the approved DLP policy or modifying the existing agent.</p>
+<h3>Expected result</h3>
+<ul>
+<li>The maker UI visibly disables the prohibited knowledge-source type before it can be configured.</li>
+<li>A live external HTTP request made from the published agent returns no endpoint data.</li>
+<li>The approved DLP policy remains unchanged throughout the validation.</li>
+</ul>
+<h2>Step by Step — Combined Authoring and Runtime Validation</h2>
+<p>Perform the following steps as one end-to-end test. The numbering in the instructions matches the red callouts in the visuals.</p>
+<ol start="1">
+<li><strong>Verify the selected nonproduction DLP policy — </strong>In Power Platform admin center, open the policy applied to the DEV/TEST environments and confirm its name in the policy wizard.</li>
+</ol>
+<ol start="2">
+<li><strong>Confirm the prohibited capability — </strong>Open the Blocked tab and verify that HTTP is listed. Do not change the policy during this test.</li>
+</ol>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/217-dlp-enforcement-01.jpg" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/217-dlp-enforcement-01.jpg" alt="Steps 1–2: live policy evidence showing the approved nonproduction policy and its Blocked connector group." width="1280" height="720"></a><figcaption><em>Steps 1–2: live policy evidence showing the approved nonproduction policy and its Blocked connector group.</em></figcaption></figure>
+<ol start="3">
+<li><strong>Open the agent in Build — </strong>In Copilot Studio, select the correct governed environment and open the published pilot agent.</li>
+</ol>
+<ol start="4">
+<li><strong>Select Add knowledge — </strong>Use the Knowledge card to open the knowledge-source picker. This is an observation-only action.</li>
+</ol>
+<ol start="5">
+<li><strong>Verify maker enforcement — </strong>Confirm that Public websites is disabled and displays the organization-policy restriction. Cancel the dialog; do not add or save a source.</li>
+</ol>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/218-dlp-enforcement-02.jpg" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/218-dlp-enforcement-02.jpg" alt="Steps 3–5: annotated live-state guide showing Public websites blocked in the Copilot Studio maker experience." width="1280" height="720"></a><figcaption><em>Steps 3–5: annotated live-state guide showing Public websites blocked in the Copilot Studio maker experience.</em></figcaption></figure>
+<ol start="6">
+<li><strong>Open Preview — </strong>Use the published agent&#8217;s Preview experience with debug mode available so the controlled request and response can be reviewed.</li>
+</ol>
+<ol start="7">
+<li><strong>Submit a deterministic endpoint request — </strong>Ask the agent to retrieve the exact live UUID from https://httpbin.org/uuid and explicitly prohibit answers from memory or general knowledge.</li>
+</ol>
+<ol start="8">
+<li><strong>Validate the non-bypass outcome — </strong>Confirm that the agent returns no live UUID, reports that outbound network access failed, and does not fabricate endpoint data.</li>
+</ol>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/219-dlp-enforcement-03.jpg" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/219-dlp-enforcement-03.jpg" alt="Steps 6–8: controlled runtime request and the observed no-data response from the published agent." width="1280" height="720"></a><figcaption><em>Steps 6–8: controlled runtime request and the observed no-data response from the published agent.</em></figcaption></figure>
+<h2>Why this is relevant for Agent Factory</h2>
+<ol>
+<li><strong>Prevents unsafe design choices: </strong>Makers see restrictions while building, before prohibited capabilities become dependencies.</li>
+<li><strong>Preserves the runtime boundary: </strong>A published agent cannot be treated as a policy escape path for external calls or blocked connectors.</li>
+<li><strong>Creates release evidence: </strong>The same negative test can be repeated in DEV, TEST, and PROD as part of a promotion checklist.</li>
+<li><strong>Supports least privilege: </strong>Only approved sources, endpoints, tools, channels, and MCP servers are available to each environment zone.</li>
+<li><strong>Reduces production drift: </strong>Regular validation detects policy changes, new connectors, and agent updates that could otherwise alter the approved control posture.</li>
+</ol>
+<h2>Conclusion</h2>
+<p>A governed Agent Factory should validate DLP at both control points: when an agent is authored and when it runs. A concise negative test gives makers and administrators evidence that prohibited capabilities are unavailable and that the published workload returns no restricted endpoint data. Repeat the test after policy, connector, channel, knowledge-source, MCP, or agent changes, and adapt the test case to the organization&#8217;s approved governance model.</p>
+</body></html>

@@ -1,0 +1,189 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Building a Production Approval Guard for Microsoft Agent Factory</title><style>body{font:17px/1.65 system-ui,sans-serif;max-width:1000px;margin:32px auto;padding:0 20px;color:#172033}img{max-width:100%;height:auto}table{width:100%;table-layout:fixed;overflow-wrap:anywhere;border-collapse:collapse}th,td{border:1px solid #d8e0ec;padding:10px}pre{overflow:auto;background:#f4f7fb;padding:16px}blockquote{border-left:4px solid #155eef;padding:12px 20px;background:#eff6ff}summary{cursor:pointer;padding:12px;font-weight:700}figcaption{font-size:.85em;color:#526077}</style></head><body><nav><a href="../index.html">Backup index</a></nav><h1>Building a Production Approval Guard for Microsoft Agent Factory</h1><p>Prashant Rangi · 2026-10-13T16:39:11 · publish</p><p>Categories: Copilot Studio, Copilot Studio &amp;amp; Agent Factory, Power Platform ALM<br>Tags: Agent Factory, Agent Governance, Copilot Studio, Deployment Pipelines, Microsoft Entra ID, Power Automate</p><h2><strong>Introduction</strong></h2>
+<p>An Agent Factory becomes production-ready only when agent releases are controlled as carefully as the agents themselves. This implementation adds a production approval guard to a custom Power Platform pipeline. Makers can prepare and validate a solution in DEV and TEST, but the PROD stage pauses until an authorized approver makes an explicit decision. After approval, the release executes under a dedicated service principal rather than the maker’s personal identity.</p>
+<p>The pilot uses the AF-PILOT-Standard-Release pipeline, the APP-AF-Pipeline-Prod-Deployer service principal, and a Power Automate approval flow in the pipeline host. The final end-to-end test deployed AF Pilot Agent version 1.0.0.3 to AF-PILOT-PROD as a managed solution.</p>
+<h3>What the approval guard provides</h3>
+<ul>
+<li>A clear separation between requesting a release, approving it, and executing it.</li>
+<li>A non-personal deployment identity with consistent permissions in the host and target environments.</li>
+<li>A visible decision trail in Power Automate and pipeline run history.</li>
+<li>A repeatable production control that can be applied to additional agent solutions and pipelines.</li>
+</ul>
+<h2><strong>Step by Step</strong></h2>
+<h3>Before you begin</h3>
+<ul>
+<li>Use a custom pipeline host with the Power Platform Pipelines application installed.</li>
+<li>Ensure the DEV, TEST, and PROD environments contain Dataverse and that target environments are Managed Environments.</li>
+<li>Create and validate the DEV → TEST → PROD stages before adding delegated deployment.</li>
+</ul>
+<h3>Step 1 Register the deployment application</h3>
+<p>In Microsoft Entra admin center, register a single-tenant application named APP-AF-Pipeline-Prod-Deployer. A redirect URI is not required for this server-to-server deployment identity.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/123-approval-guard-01.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/123-approval-guard-01.webp" alt="Figure 1  Register the dedicated single-tenant deployment application." width="1273" height="944"></a><figcaption>Figure 1 Register the dedicated single-tenant deployment application.</figcaption></figure>
+<h3>Step 2 Create the credential and establish ownership</h3>
+<p>Create a credential for the pilot and record its expiration. The screenshot masks the secret value; never place the value in a blog, source repository, or pipeline record. For production, prefer a certificate or federated credential. If a client secret is retained, store it in a controlled secret store and rotate it before expiry.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/124-approval-guard-02.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/124-approval-guard-02.webp" alt="Figure 2  Create and protect the service principal credential." width="1378" height="711"></a><figcaption>Figure 2 Create and protect the service principal credential.</figcaption></figure>
+<p>Add the pipeline stage owner as an owner of the Enterprise Application service principal. Ownership of only the App Registration is not sufficient for delegated-stage configuration.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/125-approval-guard-03.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/125-approval-guard-03.webp" alt="Figure 3  Confirm an accountable owner for the deployment identity." width="1396" height="784"></a><figcaption>Figure 3 Confirm an accountable owner for the deployment identity.</figcaption></figure>
+<h3>Step 3 Add the application user to the pipeline host</h3>
+<p>Open AF-PILOT-HOST in Power Platform admin center and go to Settings → Users and permissions → Application users.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/126-approval-guard-04.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/126-approval-guard-04.webp" alt="Figure 4  Open Application users in the pipeline host environment." width="1600" height="976"></a><figcaption>Figure 4 Open Application users in the pipeline host environment.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/127-approval-guard-05.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/127-approval-guard-05.webp" alt="Figure 5  Start creation of a new application user." width="1315" height="663"></a><figcaption>Figure 5 Start creation of a new application user.</figcaption></figure>
+<p>Select Add an app, search for APP-AF-Pipeline-Prod-Deployer, and select the matching application ID.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/128-approval-guard-06.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/128-approval-guard-06.webp" alt="Figure 6  Choose Add an app in the application-user pane." width="1600" height="832"></a><figcaption>Figure 6 Choose Add an app in the application-user pane.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/129-approval-guard-07.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/129-approval-guard-07.webp" alt="Figure 7  Select the registered deployment application." width="1600" height="834"></a><figcaption>Figure 7 Select the registered deployment application.</figcaption></figure>
+<p>Use the host environment’s root business unit and assign Deployment Pipeline Administrator.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/130-approval-guard-08.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/130-approval-guard-08.webp" alt="Figure 8  Assign the pipeline-host business unit and security role." width="1600" height="832"></a><figcaption>Figure 8 Assign the pipeline-host business unit and security role.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/131-approval-guard-09.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/131-approval-guard-09.webp" alt="Figure 9  Confirm the host application user is active." width="1374" height="643"></a><figcaption>Figure 9 Confirm the host application user is active.</figcaption></figure>
+<h3>Step 4 Add the delegated deployment application user to PROD</h3>
+<p>The Entra app registration identifies the deployment service principal, but it cannot deploy into AF-PILOT-PROD until it also exists there as a Dataverse application user. This step creates that non-interactive PROD identity and gives it the role required to import the solution.</p>
+<table style="display: table; table-layout: fixed; width: 100%; white-space: normal; overflow-wrap: anywhere;">
+<tbody>
+<tr>
+<th><strong>Field</strong></th>
+<th><strong>Value for this pilot</strong></th>
+</tr>
+<tr>
+<td>Environment</td>
+<td>AF-PILOT-PROD</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>APP-AF-Pipeline-Prod-Deployer</td>
+</tr>
+<tr>
+<td>Application (client) ID</td>
+<td>4a2513e-cd5c-4931-a484-101c0dc707d4</td>
+</tr>
+<tr>
+<td>Business unit</td>
+<td>The root business unit of AF-PILOT-PROD (org7b4ba82f in this lab)</td>
+</tr>
+<tr>
+<td>Security role</td>
+<td>System Administrator</td>
+</tr>
+<tr>
+<td>Expected state</td>
+<td>Active</td>
+</tr>
+</tbody>
+</table>
+<h4>4.1 Open Application users in the PROD environment</h4>
+<p><strong>1. </strong>In the Power Platform admin center, open Environments and select AF-PILOT-PROD.</p>
+<p><strong>2. </strong>Select Settings and expand Users + permissions.</p>
+<p><strong>3. </strong>Select Application users.</p>
+<p><strong>4. </strong>Confirm you are still in AF-PILOT-PROD before creating or editing the application user.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/153-approval-guard-revised-10.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/153-approval-guard-revised-10.webp" alt="Figure 10  Expand Users + permissions and open Application users in AF-PILOT-PROD." width="1600" height="754"></a><figcaption>Figure 10 Expand Users + permissions and open Application users in AF-PILOT-PROD.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/154-approval-guard-revised-11.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/154-approval-guard-revised-11.webp" alt="Figure 11  Check the PROD Application users list before creating a record." width="1600" height="793"></a><figcaption>Figure 11 Check the PROD Application users list before creating a record.</figcaption></figure>
+<p>Decision point: if APP-AF-Pipeline-Prod-Deployer is already present with the expected client ID, do not create a duplicate. Open the existing row and continue with the verification in section 4.5.</p>
+<h4>4.2 Select the deployment application</h4>
+<p><strong>1. </strong>Select New app user, and then select Add an app.</p>
+<p><strong>2. </strong>Search for APP-AF-Pipeline-Prod-Deployer or paste client ID</p>
+<p><strong>3. </strong>Select the result only when both the application name and client ID match.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/129-approval-guard-07.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/129-approval-guard-07.webp" alt="Figure 12  Select the APP-AF-Pipeline-Prod-Deployer registration with the matching client ID." width="1600" height="834"></a><figcaption>Figure 12 Select the APP-AF-Pipeline-Prod-Deployer registration with the matching client ID.</figcaption></figure>
+<p>The application picker hides applications that already have an application-user record in the current environment. If this application does not appear in PROD, return to the list and verify the existing record instead of creating another one.</p>
+<h4>4.3 Select the PROD root business unit</h4>
+<p><strong>1. </strong>Open the Business unit field in the Create a new app user pane.</p>
+<p><strong>2. </strong>Select org7b4ba82f, which is the root business unit of AF-PILOT-PROD in this lab.</p>
+<p><strong>3. </strong>Do not select the AF-PILOT-HOST business unit; business units are environment-specific.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/155-approval-guard-revised-13.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/155-approval-guard-revised-13.webp" alt="Figure 13  Select the root business unit belonging to AF-PILOT-PROD." width="639" height="893"></a><figcaption>Figure 13 Select the root business unit belonging to AF-PILOT-PROD.</figcaption></figure>
+<h4>4.4 Assign the System Administrator role</h4>
+<p><strong>1. </strong>Select Edit security roles after the application and business unit are populated.</p>
+<p><strong>2. </strong>Confirm the role pane shows APP-AF-Pipeline-Prod-Deployer and business unit org7b4ba82f.</p>
+<p><strong>3. </strong>Scroll to System Administrator and select it. For this pilot, no additional PROD role is required.</p>
+<p><strong>4. </strong>Confirm the role selection. Do not select Create until the app, PROD business unit, and role have all been checked.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><figcaption>Figure 14 Verify the application and PROD business unit at the top of the role pane.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/157-approval-guard-revised-15.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/157-approval-guard-revised-15.webp" alt="Figure 15  Select System Administrator for the PROD application user." width="639" height="893"></a><figcaption>Figure 15 Select System Administrator for the PROD application user.</figcaption></figure>
+<p>Important: Deployment Pipeline Administrator is the role used by this service principal in AF-PILOT-HOST. In AF-PILOT-PROD, assign System Administrator so delegated deployment can import all solution components, including plug-ins or other code components.</p>
+<h4>4.5 Create and verify the PROD application user</h4>
+<p><strong>1. </strong>Return to the Create a new app user pane and review the selected application, business unit, and security role.</p>
+<p><strong>2. </strong>Select Create. Wait for the success message and return to the AF-PILOT-PROD Application users list.</p>
+<p><strong>3. </strong>Locate APP-AF-Pipeline-Prod-Deployer.</p>
+<p><strong>4. </strong>Confirm the client ID, Active state, and PROD root business unit. The value 1 under Security roles is a role count, not the role name.</p>
+<p><strong>5. </strong>Open the application user and confirm that the assigned role is System Administrator with assignment type Direct.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/158-approval-guard-revised-16.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/158-approval-guard-revised-16.webp" alt="Figure 16  Verify the active PROD application user and its System Administrator role." width="1600" height="754"></a><figcaption>Figure 16 Verify the active PROD application user and its System Administrator role.</figcaption></figure>
+<p>The completed state is an Active application user in AF-PILOT-PROD with the expected client ID, business unit org7b4ba82f, and a directly assigned System Administrator role. This validates the target identity required by the delegated PROD deployment stage.</p>
+<h3>Step 5 Configure delegated deployment on the PROD stage</h3>
+<p>In the Deployment Pipeline Configuration app, open Deploy to PROD. The starting state shows delegated deployment disabled.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/134-approval-guard-12.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/134-approval-guard-12.webp" alt="Figure 17  Open the existing Deploy to PROD stage." width="1600" height="723"></a><figcaption>Figure 17 Open the existing Deploy to PROD stage.</figcaption></figure>
+<p>Configure the stage with the values below. Keep sharing requests disabled for the pilot. Pre-Export and Pre-Deployment gates are separate extensibility controls and are not required for this approval design.</p>
+<table style="display: table; table-layout: fixed; width: 100%; white-space: normal; overflow-wrap: anywhere;">
+<tbody>
+<tr>
+<th><strong>Setting</strong></th>
+<th><strong>Pilot value</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+<tr>
+<td>Is Delegated Deployment</td>
+<td>Yes</td>
+<td>Pauses the stage for approval and runs the deployment as the delegate.</td>
+</tr>
+<tr>
+<td>Delegated Deployment Type</td>
+<td>Service Principal</td>
+<td>Removes dependency on a maker’s personal identity.</td>
+</tr>
+<tr>
+<td>SPN Client Id</td>
+<td></td>
+<td>Identifies APP-AF-Pipeline-Prod-Deployer.</td>
+</tr>
+<tr>
+<td>Allow sharing requests</td>
+<td>No</td>
+<td>Keeps the pilot focused on the release decision.</td>
+</tr>
+<tr>
+<td>Pre-Export Step Required</td>
+<td>No</td>
+<td>No custom source-environment gate is used.</td>
+</tr>
+<tr>
+<td>Pre-Deployment Step Required</td>
+<td>No</td>
+<td>The delegated-deployment approval is the PROD gate.</td>
+</tr>
+</tbody>
+</table>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/135-approval-guard-13.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/135-approval-guard-13.webp" alt="Figure 18  Configure the delegated PROD stage and service principal client ID." width="1600" height="811"></a><figcaption>Figure 18 Configure the delegated PROD stage and service principal client ID.</figcaption></figure>
+<h3>Step 6 Create a governance solution in the host</h3>
+<p>Create an unmanaged solution in AF-PILOT-HOST to contain the approval flow and its connection references. Keeping this automation in a dedicated solution makes the control portable and supportable.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/136-approval-guard-14.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/136-approval-guard-14.webp" alt="Figure 19  Start a new solution in the pipeline host." width="1600" height="860"></a><figcaption>Figure 19 Start a new solution in the pipeline host.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/137-approval-guard-15.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/137-approval-guard-15.webp" alt="Figure 20  Create a dedicated publisher for the governance solution." width="1600" height="860"></a><figcaption>Figure 20 Create a dedicated publisher for the governance solution.</figcaption></figure>
+<p>Use a stable publisher prefix and choice value prefix. The pilot uses AF Pipeline Governance, prefix af, and choice value prefix 74000.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/138-approval-guard-16.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/138-approval-guard-16.webp" alt="Figure 21  Define the AF Pipeline Governance publisher." width="1600" height="828"></a><figcaption>Figure 21 Define the AF Pipeline Governance publisher.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/139-approval-guard-17.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/139-approval-guard-17.webp" alt="Figure 22  Create the AF Pipeline Governance solution." width="1600" height="860"></a><figcaption>Figure 22 Create the AF Pipeline Governance solution.</figcaption></figure>
+<h3>Step 7 Build the approval flow</h3>
+<p>Inside the governance solution, create an automated cloud flow named AF – PROD Deployment Approval. Use the Microsoft Dataverse When an action is performed trigger and select the pipeline approval-start event exposed by the host.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/140-approval-guard-18.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/140-approval-guard-18.webp" alt="Figure 23  Create an automated cloud flow inside the governance solution." width="1167" height="601"></a><figcaption>Figure 23 Create an automated cloud flow inside the governance solution.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/141-approval-guard-19.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/141-approval-guard-19.webp" alt="Figure 24  Name the flow and select the Dataverse action trigger." width="1600" height="836"></a><figcaption>Figure 24 Name the flow and select the Dataverse action trigger.</figcaption></figure>
+<p>Add Start and wait for an approval, route the result through a condition, and finish both branches with the Dataverse UpdateApprovalStatus unbound action. The callback must use the service principal’s Dataverse connection—not a user connection.</p>
+<p><a title="Open full-size screenshot" href="../media/142-approval-guard-20.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/142-approval-guard-20.webp" alt="Figure 25  Authenticate the Dataverse connection used by the flow." width="1381" height="513"></a></p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><figcaption>Figure 25 Authenticate the Dataverse connection used by the flow.</figcaption></figure>
+<p>Populate the approval title, approver, deployment details, and a link back to the run. Save and turn on the flow. Test both decision paths before calling the gate production-ready.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/143-approval-guard-21.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/143-approval-guard-21.webp" alt="Figure 26  The approver receives an actionable production deployment request." width="1600" height="836"></a><figcaption>Figure 26 The approver receives an actionable production deployment request.</figcaption></figure>
+<h3>Step 8 Submit a production deployment</h3>
+<p>From the unmanaged solution in DEV, select Deploy through pipelines, choose Deploy to PROD, review the solution and target, and submit the request. The stage should move to pending approval; it must not import the solution yet.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/144-approval-guard-22.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/144-approval-guard-22.webp" alt="Figure 27  Review the AF Pilot Agent 1.0.0.3 deployment to PROD." width="1600" height="753"></a><figcaption>Figure 27 Review the AF Pilot Agent 1.0.0.3 deployment to PROD.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/145-approval-guard-23.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/145-approval-guard-23.webp" alt="Figure 28  Confirm that the production request waits for approval." width="1600" height="753"></a><figcaption>Figure 28 Confirm that the production request waits for approval.</figcaption></figure>
+<h3>Step 9 Approve the controlled release</h3>
+<p>Open the approval, verify the solution, requester, target stage, and deployment details, then select Approve. The response is recorded before the pipeline continues.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/146-approval-guard-24.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/146-approval-guard-24.webp" alt="Figure 29  Review the production approval request and release evidence." width="1600" height="754"></a><figcaption>Figure 29 Review the production approval request and release evidence.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/147-approval-guard-25.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/147-approval-guard-25.webp" alt="Figure 30  Confirm that the approval response was recorded." width="1600" height="754"></a><figcaption>Figure 30 Confirm that the approval response was recorded.</figcaption></figure>
+<h2>3 Validation</h2>
+<p>The control was validated in both directions. A rejected request was blocked and left PROD unchanged. An approved request completed the flow, continued the delegated pipeline stage, and imported the managed solution into PROD.</p>
+<h3>Validation checks</h3>
+<ol>
+<li>Submit a new request, approve it, and confirm that the callback uses status 20 through the same service-principal connection.</li>
+<li>Verify that the approval flow run succeeds.</li>
+<li>Verify that the PROD stage run succeeds and the Last deployed timestamp changes.</li>
+<li>Open PROD solutions and confirm that the expected managed solution and version are present.</li>
+</ol>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/148-approval-guard-26.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/148-approval-guard-26.webp" alt="Figure 31  The latest approval-flow run succeeded after the connection and approver fixes." width="1600" height="754"></a><figcaption>Figure 31 The latest approval-flow run succeeded after the connection and approver fixes.</figcaption></figure>
+<p>The older failed runs visible in the history were troubleshooting evidence: the first issue was an invalid Assigned To value; the second was a rejection callback using a user Dataverse connection. Both were corrected before the successful run.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/149-approval-guard-27.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/149-approval-guard-27.webp" alt="Figure 32  The PROD environment shows the updated deployment timestamp." width="1600" height="753"></a><figcaption>Figure 32 The PROD environment shows the updated deployment timestamp.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/150-approval-guard-28.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/150-approval-guard-28.webp" alt="Figure 33  Pipeline run history confirms a successful PROD deployment of version 1.0.0.3." width="1600" height="753"></a><figcaption>Figure 33 Pipeline run history confirms a successful PROD deployment of version 1.0.0.3.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/151-approval-guard-29.webp" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 100%; height: auto;" src="../media/151-approval-guard-29.webp" alt="Figure 34  AF Pilot Agent 1.0.0.3 is present in PROD as a managed solution." width="1600" height="754"></a><figcaption>Figure 34 AF Pilot Agent 1.0.0.3 is present in PROD as a managed solution.</figcaption></figure>
+<h2>Conclusion</h2>
+<p>The approval guard ensures that production deployments proceed only after an authorized approval decision. It separates the maker, approver, and deployment identities to prevent uncontrolled releases. Approved deployments run through a dedicated service principal instead of a user’s personal identity. Rejected or pending requests cannot progress to the production environment. This provides the governance, auditability, and repeatability required for operating Agent Factory securely in production.</p>
+</body></html>

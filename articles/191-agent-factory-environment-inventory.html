@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Registering Agent Factory Environments in a Governed Inventory</title><style>body{font:17px/1.65 system-ui,sans-serif;max-width:1000px;margin:32px auto;padding:0 20px;color:#172033}img{max-width:100%;height:auto}table{width:100%;table-layout:fixed;overflow-wrap:anywhere;border-collapse:collapse}th,td{border:1px solid #d8e0ec;padding:10px}pre{overflow:auto;background:#f4f7fb;padding:16px}blockquote{border-left:4px solid #155eef;padding:12px 20px;background:#eff6ff}summary{cursor:pointer;padding:12px;font-weight:700}figcaption{font-size:.85em;color:#526077}</style></head><body><nav><a href="../index.html">Backup index</a></nav><h1>Registering Agent Factory Environments in a Governed Inventory</h1><p>Prashant Rangi · 2026-10-15T09:23:51 · publish</p><p>Categories: Copilot Studio, Copilot Studio &amp;amp; Agent Factory<br>Tags: Agent Factory, Agent Governance, Copilot Studio</p><h2>Introduction</h2>
+<p>An Agent Factory environment inventory is a governed register of the environments used to build, test, deploy, and operate agents. Unlike a platform-generated environment list, the register adds the business context needed for governance: accountable owners, lifecycle stage, risk, data classification, access boundary, pipeline association, operating status, and review date.</p>
+<p>A formal inventory is important because technical resources alone do not explain who is accountable, what the environment is allowed to host, or how it reaches production. The register gives governance teams one durable source for reviews, audits, and lifecycle decisions.</p>
+<h2>Step by Step Configuration</h2>
+<h3>Step 1 Use the governance solution in the pipeline host</h3>
+<p>Open the custom pipeline host and its governance solution. Create a standard Dataverse table named Agent Factory Environment Inventory so the register is solution-aware, secured, and portable with the governance components.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/185-environment-inventory-01.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/185-environment-inventory-01.png" alt="Figure 1 — The inventory table is registered inside the AF Pipeline Governance solution." width="1482" height="1062"></a><figcaption>Figure 1 — The inventory table is registered inside the AF Pipeline Governance solution.</figcaption></figure>
+<h3>Step 2 Create the governance metadata schema</h3>
+<p>Add columns for Environment ID, lifecycle stage, environment group, managed status, business owner, technical owner, risk tier, data classification, security group, pipeline host, deployment pipeline, region, status, and next review date. Keep Environment Name as the readable primary field.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/186-environment-inventory-02.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/186-environment-inventory-02.png" alt="Figure 2 — Add governance fields and confirm the ownership, lifecycle, access, and pipeline columns." width="1482" height="1062"></a><figcaption>Figure 2 — Add governance fields and confirm the ownership, lifecycle, access, and pipeline columns.</figcaption></figure>
+<h3>Step 3 Seed the environment records</h3>
+<p>Use the supplied Agent_Factory_Environment_Inventory.csv file as the controlled seed. In the table command bar, select Import, upload the CSV, confirm that all 15 governance columns are mapped, and complete the import. Remove incomplete test records so only the four reviewed environment records remain.</p>
+<table style="display: table; table-layout: fixed; width: 100%; white-space: normal; overflow-wrap: anywhere;">
+<tbody>
+<tr>
+<td><strong>Environment</strong></td>
+<td><strong>Lifecycle</strong></td>
+<td><strong>Access boundary / role</strong></td>
+<td><strong>Risk</strong></td>
+</tr>
+<tr>
+<td>AF-PILOT-DEV</td>
+<td>Development</td>
+<td>SG-AF-DEV-Makers</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>AF-PILOT-TEST</td>
+<td>Test</td>
+<td>SG-AF-TEST-Testers</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>AF-PILOT-PROD</td>
+<td>Production</td>
+<td>SG-AF-PROD-EndUsers</td>
+<td>High</td>
+</tr>
+<tr>
+<td>AF-PILOT-HOST</td>
+<td>Shared services</td>
+<td>SG-AF-Pipeline-Admins</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h2>Validation</h2>
+<p>Validation confirmed that the Dataverse table exists inside the governance solution and contains exactly four reviewed records for DEV, TEST, PROD, and the pipeline host. The imported records include the expected lifecycle, environment-group, security-group, pipeline-host, and risk metadata.</p>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/187-environment-inventory-03.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/187-environment-inventory-03.png" alt="Figure 3 — The formal inventory table exists; use +15 more to expose additional governance fields." width="1482" height="1062"></a><figcaption>Figure 3 — The formal inventory table exists; use +15 more to expose additional governance fields.</figcaption></figure>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/188-environment-inventory-04.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/188-environment-inventory-04.png" alt="Figure 4 — The reviewed DEV, TEST, PROD, and pipeline-host records are present." width="1482" height="1062"></a><figcaption>Figure 4 — The reviewed DEV, TEST, PROD, and pipeline-host records are present.</figcaption></figure>
+<h3>Governance metadata validation</h3>
+<figure class="runbook-screenshot" style="box-sizing: border-box; max-width: 760px; margin: 1.5rem auto;"><a title="Open full-size screenshot" href="../media/189-environment-inventory-05.png" target="_blank" rel="noopener"><img loading="lazy" decoding="async" style="display: block; max-width: 100%; width: auto; height: auto; margin: 0px auto;" src="../media/189-environment-inventory-05.png" alt="Figure 5 — Environment group, security group, pipeline host, and risk metadata are populated." width="1482" height="1062"></a><figcaption>Figure 5 — Environment group, security group, pipeline host, and risk metadata are populated.</figcaption></figure>
+<h2>Why This Is Relevant for Agent Factory</h2>
+<ul>
+<li>Links each environment to accountable business and technical owners.</li>
+<li>Shows where an environment sits in the agent lifecycle and which pipeline moves solutions forward.</li>
+<li>Captures risk and data classification for review and exception handling.</li>
+<li>Makes access, Managed Environment, review, and decommissioning expectations visible in one governed record.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>A governed environment inventory turns a collection of Power Platform environments into an accountable operating model. Keeping the register current alongside access, pipeline, and lifecycle controls gives an Agent Factory the traceability required for production governance.</p>
+</body></html>
