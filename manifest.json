@@ -1,15 +1,23 @@
 {
   "schemaVersion": 1,
-  "exportedAt": "2026-10-18T10:13:41.972Z",
+  "exportedAt": "2026-10-18T17:36:10.841Z",
   "sourceSite": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io",
   "articles": [
+    {
+      "id": 280,
+      "title": "Azure DevOps ALM for a Governed Agent Factory",
+      "status": "publish",
+      "path": "articles/280-azure-devops-alm-governed-agent-factory.html",
+      "metadataPath": "metadata/280.json",
+      "sha256": "0333127591b7e68f2f554be6362149011ec154c5334b2a9c9afb3f1b8acd4374"
+    },
     {
       "id": 220,
       "title": "Validate DLP Enforcement Across Agent Authoring and Runtime",
       "status": "publish",
       "path": "articles/220-validate-dlp-enforcement-agent-authoring-runtime.html",
       "metadataPath": "metadata/220.json",
-      "sha256": "d0404a2958c0f6cb3134e0886bffc498e58bed5779d40f94bd82198b6815dcd2"
+      "sha256": "cac535a3b46ffa26e4a5ab44ba9f7f233a6b1d2c087dd196387ef2f592efd833"
     },
     {
       "id": 215,
@@ -17,7 +25,7 @@
       "status": "publish",
       "path": "articles/215-production-dlp-policy-agent-factory.html",
       "metadataPath": "metadata/215.json",
-      "sha256": "030f954bb35acb117d9e9f9e7d921ac1f90bf372de33f99dfb77fc49c6302ba7"
+      "sha256": "d1dbbea7ca76a1cb9e827b99ffea1b0abe0196166082e2cad890d305c1ccaf22"
     },
     {
       "id": 214,
@@ -25,7 +33,7 @@
       "status": "publish",
       "path": "articles/214-nonproduction-dlp-policy-agent-factory.html",
       "metadataPath": "metadata/214.json",
-      "sha256": "e73e6a56f5b41c9784c6c6c49f5736f127eff9c3b97cfe7443504ede0fc8af0f"
+      "sha256": "2cf72f771295302b6b95de5dd8fb6fe412ff6add259f33028798678de186167b"
     },
     {
       "id": 191,
@@ -33,7 +41,7 @@
       "status": "publish",
       "path": "articles/191-agent-factory-environment-inventory.html",
       "metadataPath": "metadata/191.json",
-      "sha256": "31561215cb56cbbb37aad597461867719b4f747dcb72b86a82a774147338fc33"
+      "sha256": "c5e93be5281b5891746da25dab59541c4b5009dbb1b949298b09f45fb7bb3d75"
     },
     {
       "id": 190,
@@ -41,7 +49,7 @@
       "status": "publish",
       "path": "articles/190-agent-factory-environment-access-security-groups.html",
       "metadataPath": "metadata/190.json",
-      "sha256": "2372a92cf396182f932c87dbcc65b2f8ad6b170e8c68fa340d809351e4d45648"
+      "sha256": "eb9895523cf379debcadaec1869712ea0e7eb56bca7b2129b416542916d68fba"
     },
     {
       "id": 179,
@@ -49,7 +57,7 @@
       "status": "publish",
       "path": "articles/179-power-platform-tenant-settings-agent-factory.html",
       "metadataPath": "metadata/179.json",
-      "sha256": "63b37eb38437015e0411d0e987c855ae08b5190a09d5b6ef0d96c401ce36d231"
+      "sha256": "9d4c5a65180d97adca7a4124361b706085c288e1daf900d1e99615f5fe9867da"
     },
     {
       "id": 170,
@@ -57,7 +65,7 @@
       "status": "publish",
       "path": "articles/170-environment-routing-governed-agent-factory.html",
       "metadataPath": "metadata/170.json",
-      "sha256": "bb6e3e63cfb02ee161c4decf9d2d2ed26df2358a2d4e56adca6b2a48fcec9233"
+      "sha256": "46204a75f84112ecd411ec568e29ff67f3321cc040518cdcaa30bd44a8501ad5"
     },
     {
       "id": 152,
@@ -65,7 +73,7 @@
       "status": "publish",
       "path": "articles/152-agent-factory-production-approval-guard.html",
       "metadataPath": "metadata/152.json",
-      "sha256": "142f121be6154d4533503eb9125a368ebf2d4700a0abb1f0f97a248502df150f"
+      "sha256": "ebfca6e1db622d2197c80f2a8d91ceae6a70a1255ac559ae97fd31da5b0c6acc"
     },
     {
       "id": 105,
@@ -73,7 +81,7 @@
       "status": "publish",
       "path": "articles/105-secure-agent-factory-pipelines-with-microsoft-entra-id.html",
       "metadataPath": "metadata/105.json",
-      "sha256": "b01c1b4c0088b87cbbca224bb6d62463af6fae46449b4176582d311f5b2a2803"
+      "sha256": "f5ff189dea46bb61fb6622adb36b3c3c58771bd41feb0d24daabc7dec1d05721"
     },
     {
       "id": 83,
@@ -81,7 +89,7 @@
       "status": "publish",
       "path": "articles/83-agent-factory-lifecycle-governance-environment-groups.html",
       "metadataPath": "metadata/83.json",
-      "sha256": "7784a34b7ff588a8cbb45cd5d647f787af4633fec810bf033c7754411540679a"
+      "sha256": "28f861706a2f7016494ee037fb2964810abc43d4a34b807b60d1ab711f156f74"
     },
     {
       "id": 70,
@@ -89,7 +97,7 @@
       "status": "publish",
       "path": "articles/70-deploy-promote-pilot-agent-power-platform-pipeline.html",
       "metadataPath": "metadata/70.json",
-      "sha256": "a6ae8a8fd8b7ff015777c9448abd6dd4fcb34aac9f34b2dc791da20f5dfdcbfd"
+      "sha256": "aa6b0c86e94fe6f0112a09ac57ace2c227cd574931f169f2bf8c86df3322e16b"
     },
     {
       "id": 36,
@@ -97,10 +105,388 @@
       "status": "publish",
       "path": "articles/36-agent-factory-pilot-runbook.html",
       "metadataPath": "metadata/36.json",
-      "sha256": "9a6703680f47ff7e0b52d7ab6c9ec395c16a23dda7e774547df7d21a57094f2a"
+      "sha256": "826045529097402c2eba7beb47b2ecaa5f002ce04dec23abc0f08adc9b9ce7e1"
     }
   ],
   "media": [
+    {
+      "id": 278,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-54.png",
+      "path": "media/278-azure-devops-alm-54.png",
+      "bytes": 413145,
+      "sha256": "ac46b3a5183887569f1ced371c078c3f26a33e1ac0eb1a7cda41a0b8a73fde8b"
+    },
+    {
+      "id": 277,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-53.png",
+      "path": "media/277-azure-devops-alm-53.png",
+      "bytes": 342550,
+      "sha256": "d917467a17eec37d5ba8da822fb596e512cd235e19db75d356959cdb9a484187"
+    },
+    {
+      "id": 276,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-52.png",
+      "path": "media/276-azure-devops-alm-52.png",
+      "bytes": 44784,
+      "sha256": "5a9db492707094e565ae5fcd52a27747d61b0bc8727f84c7fa1c191553381813"
+    },
+    {
+      "id": 275,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-51.png",
+      "path": "media/275-azure-devops-alm-51.png",
+      "bytes": 64195,
+      "sha256": "e3596bfb0795555794830bad488dd415ed8f3a2f8b00a061e8a9fe485692fdb3"
+    },
+    {
+      "id": 274,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-50.png",
+      "path": "media/274-azure-devops-alm-50.png",
+      "bytes": 50041,
+      "sha256": "2e1dcc7571933322ac1b85787781ef230bb849734fd219fdc70d2429b42f465e"
+    },
+    {
+      "id": 273,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-49.png",
+      "path": "media/273-azure-devops-alm-49.png",
+      "bytes": 80741,
+      "sha256": "33a990f8dbe2f59abfe6caecdbb1b768c332b9f99161ddc5de80c8e0dc53caff"
+    },
+    {
+      "id": 272,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-48.png",
+      "path": "media/272-azure-devops-alm-48.png",
+      "bytes": 56737,
+      "sha256": "62c42cbca62d5a1e79f23529c659c427c475822ec2f19f87820de8fca2f72287"
+    },
+    {
+      "id": 271,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-47.png",
+      "path": "media/271-azure-devops-alm-47.png",
+      "bytes": 59828,
+      "sha256": "f8d5d595562b11c8e7a53025029d83726fa61a0b8ccec18989be3e2a4823becd"
+    },
+    {
+      "id": 270,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-46.png",
+      "path": "media/270-azure-devops-alm-46.png",
+      "bytes": 94066,
+      "sha256": "2f626a36955b329aac4e77e36fe173d97377b5409c45ab84b30a975ea2b6fd23"
+    },
+    {
+      "id": 269,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-45.png",
+      "path": "media/269-azure-devops-alm-45.png",
+      "bytes": 66676,
+      "sha256": "bf72587ab703e047f99a07f3f0b81e1461c1788848f140a721342b698f2f5ac3"
+    },
+    {
+      "id": 268,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-44.png",
+      "path": "media/268-azure-devops-alm-44.png",
+      "bytes": 42758,
+      "sha256": "eedfecd805cea79b663c5a2f35e501d8e94a37679aee16d6e1298eedcfecd196"
+    },
+    {
+      "id": 267,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-43.png",
+      "path": "media/267-azure-devops-alm-43.png",
+      "bytes": 66042,
+      "sha256": "6db9b6403c352b538acec59f11036ca10d41d91dbab15d4509fdd894e3b2b8ab"
+    },
+    {
+      "id": 266,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-42.png",
+      "path": "media/266-azure-devops-alm-42.png",
+      "bytes": 57874,
+      "sha256": "7c5c93beb74fb40720a7d83adc476494e73e365240f9681b5f568dbf44fe4f25"
+    },
+    {
+      "id": 265,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-41.png",
+      "path": "media/265-azure-devops-alm-41.png",
+      "bytes": 27681,
+      "sha256": "ced0638ebff57db653c2a4f20ece77694a79d4a75a7763215849067f08f691ba"
+    },
+    {
+      "id": 264,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-40.png",
+      "path": "media/264-azure-devops-alm-40.png",
+      "bytes": 40496,
+      "sha256": "0e91934560d5ddcbb2e7ee29a36982459b8994ffbe20bb234d3828801d0f53ea"
+    },
+    {
+      "id": 263,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-39.png",
+      "path": "media/263-azure-devops-alm-39.png",
+      "bytes": 442976,
+      "sha256": "6d503e9bc07849ef98b3dbf1c0789eac3fa45c37da56fca8ada853e2680052a7"
+    },
+    {
+      "id": 262,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-38.png",
+      "path": "media/262-azure-devops-alm-38.png",
+      "bytes": 93196,
+      "sha256": "e3160d586416dc6fe045d02ba9af209ca98e4a70e9dcce2a897520cd0b92c975"
+    },
+    {
+      "id": 261,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-37.png",
+      "path": "media/261-azure-devops-alm-37.png",
+      "bytes": 87565,
+      "sha256": "8fce258b9e0182417d71e71c2cd560c05ea278724773e60123b716f52382902a"
+    },
+    {
+      "id": 260,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-36.png",
+      "path": "media/260-azure-devops-alm-36.png",
+      "bytes": 40099,
+      "sha256": "ac2aa00c82d337596c5954ec716f0c6a0aa8549c028a66bd2d3b9fcae11eaef3"
+    },
+    {
+      "id": 259,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-35.png",
+      "path": "media/259-azure-devops-alm-35.png",
+      "bytes": 46953,
+      "sha256": "fe0cf420d6569f0a7272472cdcfa559d4dd6d64c05fb2f4be74e4434bf5db6af"
+    },
+    {
+      "id": 258,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-34.png",
+      "path": "media/258-azure-devops-alm-34.png",
+      "bytes": 40107,
+      "sha256": "0a02a260e8df96ca1aa0fdc605616e2ea097230d9d912ba6c1c1c1047f4c9bff"
+    },
+    {
+      "id": 257,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-33.png",
+      "path": "media/257-azure-devops-alm-33.png",
+      "bytes": 31944,
+      "sha256": "075de701029e9064f0fd1c8ff6ff7b9816dbdb214f3339d5995fc1a241337169"
+    },
+    {
+      "id": 256,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-32.png",
+      "path": "media/256-azure-devops-alm-32.png",
+      "bytes": 25788,
+      "sha256": "13deb642c5e3acf36085eca5cef608ed2d067b702bbe0719322b93dc1d92afa0"
+    },
+    {
+      "id": 255,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-31.png",
+      "path": "media/255-azure-devops-alm-31.png",
+      "bytes": 136151,
+      "sha256": "311465f30a2de9ed6c43f1430f1341f573e14bc7d797becd279685bbd519bb6f"
+    },
+    {
+      "id": 254,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-30.png",
+      "path": "media/254-azure-devops-alm-30.png",
+      "bytes": 184731,
+      "sha256": "05a26205fd3407cd064e1ee6277a7c15e43fb992c499674c49f3e6753d749787"
+    },
+    {
+      "id": 253,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-29.png",
+      "path": "media/253-azure-devops-alm-29.png",
+      "bytes": 49739,
+      "sha256": "c8f8558d615a322ed5e54a48fc9366ef47632bc3b31c2798813aba7426c46250"
+    },
+    {
+      "id": 252,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-28.png",
+      "path": "media/252-azure-devops-alm-28.png",
+      "bytes": 24522,
+      "sha256": "6cfc361db3763e5e4d13eb635fdbee0b2b6b265c44f72d6af8728913fa4141ff"
+    },
+    {
+      "id": 251,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-27.png",
+      "path": "media/251-azure-devops-alm-27.png",
+      "bytes": 38862,
+      "sha256": "fd0afd76f5f99c4d5c0cbea006c544f2bf363fb99db28d410feab56eb8ff5733"
+    },
+    {
+      "id": 250,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-26.png",
+      "path": "media/250-azure-devops-alm-26.png",
+      "bytes": 45196,
+      "sha256": "0813ac91a0747758b3229638f9ec7cc063ef148805f91f99787c0ea4b80c12c6"
+    },
+    {
+      "id": 249,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-25.png",
+      "path": "media/249-azure-devops-alm-25.png",
+      "bytes": 366246,
+      "sha256": "336ef62b84503773ff29a4c170e381e384e24150209a43c0a1c55326b1c9c5c5"
+    },
+    {
+      "id": 248,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-24.png",
+      "path": "media/248-azure-devops-alm-24.png",
+      "bytes": 79734,
+      "sha256": "a32ae8cb86c7afb51317d8e90f9cd444112c84a9fa1082a9c836cda6fa2989ad"
+    },
+    {
+      "id": 247,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-23.png",
+      "path": "media/247-azure-devops-alm-23.png",
+      "bytes": 560247,
+      "sha256": "732f96c1237fe9132f0c7ff351daad5859081051229d38fdfdb5eb1802e0d5aa"
+    },
+    {
+      "id": 246,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-22.png",
+      "path": "media/246-azure-devops-alm-22.png",
+      "bytes": 441344,
+      "sha256": "b26ed511941ee0adabece30bb1562a5ae9c08bc95c173ac9188ffd089104ed40"
+    },
+    {
+      "id": 245,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-21.png",
+      "path": "media/245-azure-devops-alm-21.png",
+      "bytes": 83172,
+      "sha256": "438f27347a5b6235e7e732c806ec34f06b944e9d8c20fa358c8ba75c8ee48a6a"
+    },
+    {
+      "id": 244,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-20.png",
+      "path": "media/244-azure-devops-alm-20.png",
+      "bytes": 89222,
+      "sha256": "79d49494067741cf2c99609898735791ad7233831c5bc866e7a1d8aac179bcc3"
+    },
+    {
+      "id": 243,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-19.png",
+      "path": "media/243-azure-devops-alm-19.png",
+      "bytes": 439835,
+      "sha256": "53c994ae569e8421ddffef07c7d9e0c87f5a5b5903c50f9b4028c52ca4fe0646"
+    },
+    {
+      "id": 242,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-18.png",
+      "path": "media/242-azure-devops-alm-18.png",
+      "bytes": 419630,
+      "sha256": "6085e26d9a633e6123c43017d7dc7946ffec3913a0f6bac849004d0e38f2198c"
+    },
+    {
+      "id": 241,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-17.png",
+      "path": "media/241-azure-devops-alm-17.png",
+      "bytes": 251383,
+      "sha256": "36a38216cc2ed2c57e30cedb2b8cc7a0ba4256dec2e9c2219f793474e6b2e429"
+    },
+    {
+      "id": 240,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-16.png",
+      "path": "media/240-azure-devops-alm-16.png",
+      "bytes": 42690,
+      "sha256": "9c6d79b08a36dfd7b09a4adff8c7b981023fdc339901f99486dc2cfe7bc42d83"
+    },
+    {
+      "id": 239,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-15.png",
+      "path": "media/239-azure-devops-alm-15.png",
+      "bytes": 11378,
+      "sha256": "5a602dbfa5cb3e3b46d7a5131521bc6cb399b552e7592af0f5123b9cfe51c2b3"
+    },
+    {
+      "id": 238,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-14.png",
+      "path": "media/238-azure-devops-alm-14.png",
+      "bytes": 67851,
+      "sha256": "27a1323f7a8613aafd1097ba59b6aa4516764b3dd4a93323f03cbc0844599fa9"
+    },
+    {
+      "id": 237,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-13.png",
+      "path": "media/237-azure-devops-alm-13.png",
+      "bytes": 765079,
+      "sha256": "d617a39535a32fb04649a799dfea0276893152717063608bab0b586782a7c14e"
+    },
+    {
+      "id": 236,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-12.png",
+      "path": "media/236-azure-devops-alm-12.png",
+      "bytes": 364236,
+      "sha256": "2b0c946ee24f79a4ff6552d85b6a2c5495ad97fb4fdc007dea6293d8fac05df9"
+    },
+    {
+      "id": 235,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-11.png",
+      "path": "media/235-azure-devops-alm-11.png",
+      "bytes": 368006,
+      "sha256": "4ddaffbf504b0a3bdd6152598f329a777d11dcc510b7f7d6e785592beb5dd7a2"
+    },
+    {
+      "id": 234,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-10.png",
+      "path": "media/234-azure-devops-alm-10.png",
+      "bytes": 196966,
+      "sha256": "4e6385d32584819f9ed933ed8b7fc2c1fc7e756a5258025aa81e9b0b0aa7f2f1"
+    },
+    {
+      "id": 233,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-09.png",
+      "path": "media/233-azure-devops-alm-09.png",
+      "bytes": 377444,
+      "sha256": "9064d9b78e03bcfbe7e30e03524356e0259ce563b493af2abfa2ad81c664cecc"
+    },
+    {
+      "id": 232,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-08.png",
+      "path": "media/232-azure-devops-alm-08.png",
+      "bytes": 25462,
+      "sha256": "179cf3be87f1e07422ef3cbee7590a5f8429fa3a04c6bd6f30deaad22c119a59"
+    },
+    {
+      "id": 231,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-07.png",
+      "path": "media/231-azure-devops-alm-07.png",
+      "bytes": 52618,
+      "sha256": "577a78fc053a16ec889a850758bbe04ffd4f715579cfad95a837ff9e8855c4c2"
+    },
+    {
+      "id": 230,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-06.png",
+      "path": "media/230-azure-devops-alm-06.png",
+      "bytes": 47495,
+      "sha256": "ce83b306d10586a80136185e16608d0c81df64f3071cd03f482905e2a2e573e5"
+    },
+    {
+      "id": 229,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-05.png",
+      "path": "media/229-azure-devops-alm-05.png",
+      "bytes": 211513,
+      "sha256": "a68a1d2b5e6a60795c76f389b1d69cca1a9b2abc5e4ff77ba0e49af469733ef6"
+    },
+    {
+      "id": 228,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-04.png",
+      "path": "media/228-azure-devops-alm-04.png",
+      "bytes": 156098,
+      "sha256": "72df6f188281bf3ee206128fcab5537a7e2985f302d2658aa87800339c5ac28f"
+    },
+    {
+      "id": 227,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-03.png",
+      "path": "media/227-azure-devops-alm-03.png",
+      "bytes": 89169,
+      "sha256": "4c9b9fe6d0e5ff410e1d57087ac226d149521bb0d2242895a1553427a63a00f0"
+    },
+    {
+      "id": 226,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-02.png",
+      "path": "media/226-azure-devops-alm-02.png",
+      "bytes": 25414,
+      "sha256": "dcf226f1df365492c4a7b2cee52d99d588250aacd4d62e380cae4736d545f58a"
+    },
+    {
+      "id": 225,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-01.png",
+      "path": "media/225-azure-devops-alm-01.png",
+      "bytes": 72069,
+      "sha256": "c9d8fb4ca73fb8471c2a541dd0013cae4b5e8dc9cfe7a96802b1609075aac277"
+    },
     {
       "id": 219,
       "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/dlp-enforcement-03.jpg",
@@ -184,13 +570,6 @@
       "path": "media/205-production-dlp-01.png",
       "bytes": 1412604,
       "sha256": "5d1833e87418a4e757de9f0d6e63c1d9fa06c34e8642a85951289bc95f0071ed"
-    },
-    {
-      "id": 204,
-      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/nonproduction-dlp-09.png",
-      "path": "media/204-nonproduction-dlp-09.png",
-      "bytes": 1144918,
-      "sha256": "2c8d778ae318dbed5a3486ec758fe263fe3ba773bdc3c930a768c2ef6b4e29b0"
     },
     {
       "id": 203,
@@ -417,13 +796,6 @@
       "sha256": "4803ac9f829572ee5c4565e0467167dd8b6650bc6599487dc5a105c452ce9495"
     },
     {
-      "id": 156,
-      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-revised-14.webp",
-      "path": "media/156-approval-guard-revised-14.webp",
-      "bytes": 17204,
-      "sha256": "3af62c5652e0de9afdf041eb5f7830e2d7ccfcb3b2486780ef105b8002d0ac01"
-    },
-    {
       "id": 155,
       "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-revised-13.webp",
       "path": "media/155-approval-guard-revised-13.webp",
@@ -571,20 +943,6 @@
       "sha256": "f2e4351ff5851f71773eb3f653454fe4d602d1a3161885bd2c0a4bf2559f7ad4"
     },
     {
-      "id": 133,
-      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-11.webp",
-      "path": "media/133-approval-guard-11.webp",
-      "bytes": 46176,
-      "sha256": "ac81b0ed645ebe60e71cd4eb29151add5e2e910319025f3d7c3bd9eb625a086d"
-    },
-    {
-      "id": 132,
-      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-10.webp",
-      "path": "media/132-approval-guard-10.webp",
-      "bytes": 54722,
-      "sha256": "ed18b90aaa74115575981acaa843525a9e38be9c5cdd8bdef9f6decc27f36f56"
-    },
-    {
       "id": 131,
       "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/approval-guard-09.webp",
       "path": "media/131-approval-guard-09.webp",
@@ -723,20 +1081,6 @@
       "path": "media/109-create-team-ppac.webp",
       "bytes": 28020,
       "sha256": "e9495500029d6d7080010391ce82ede8622c5f371e349ace3cce31ee66c2efbb"
-    },
-    {
-      "id": 107,
-      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-admins-00-1.png",
-      "path": "media/107-pipeline-admins-00-1.png",
-      "bytes": 106413,
-      "sha256": "b5962e0eac21f7024577d2e2bdadf2d4bc5fba24a7d057c802a3d0c2c7c9c5df"
-    },
-    {
-      "id": 106,
-      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/pipeline-admins-00.png",
-      "path": "media/106-pipeline-admins-00.png",
-      "bytes": 106413,
-      "sha256": "b5962e0eac21f7024577d2e2bdadf2d4bc5fba24a7d057c802a3d0c2c7c9c5df"
     },
     {
       "id": 81,
@@ -1138,7 +1482,7 @@
       "sha256": "a2ac253b3c18d352b1c759b75d6c31ab461ee994e8c531017f291131aa9060d8"
     }
   ],
-  "articleCount": 12,
-  "mediaCount": 148,
-  "mediaBytes": 42683522
+  "articleCount": 13,
+  "mediaCount": 196,
+  "mediaBytes": 49607420
 }

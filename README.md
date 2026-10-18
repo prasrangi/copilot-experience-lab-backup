@@ -1,4 +1,4 @@
-# Copilot Experience Lab — private blog backup
+# Copilot Experience Lab — blog content backup
 
 This repository is a point-in-time **content backup**, not a complete WordPress database or Azure disaster-recovery backup.
 
@@ -7,12 +7,14 @@ This repository is a point-in-time **content backup**, not a complete WordPress 
 - `wordpress-export.json`: saved article content, original WordPress block HTML, rendered HTML, status, dates, author display names, categories, tags, and attachment metadata.
 - `articles/`: portable HTML copies using the local images in `media/`.
 - `metadata/`: per-article recovery metadata, including the original block HTML.
-- `media/`: downloaded original attachment files. Unattached media are also retained so library assets are not lost.
+- `media/`: original attachment files. The latest snapshot includes only media referenced by published articles; earlier backups also retained unattached library assets.
 - `manifest.json`: article and media inventory, export timestamp, sizes, and SHA-256 integrity hashes.
 - `index.html`: local article index.
 - `prepare_backup.py`: standard-library-only utility for packaging a fresh sanitized export.
 
 The export deliberately excludes passwords, authentication cookies, API tokens, database credentials, user-account records, comments, and Azure secrets.
+
+The repository is public. Refreshes must exclude unpublished article content and media used only by drafts. Previously committed files and commit history are retained; `manifest.json` identifies the files in the current snapshot.
 
 ## Read the backup offline
 
