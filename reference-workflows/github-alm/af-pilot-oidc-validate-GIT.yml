@@ -1,0 +1,59 @@
+name: AF-PILOT-OIDC-Validate-GIT
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+
+jobs:
+  validate-connection:
+    name: Validate ${{ matrix.environment }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: ${{ matrix.environment }}
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        include:
+          - environment: AF-PILOT-DEV-GIT
+            expected_url: https://YOUR-DEV-ORG.crm.dynamics.com
+          - environment: AF-PILOT-TEST-GIT
+            expected_url: https://YOUR-TEST-ORG.crm.dynamics.com
+          - environment: AF-PILOT-PROD-GIT
+            expected_url: https://YOUR-PROD-ORG.crm.dynamics.com
+    env:
+      PP_CLIENT_ID_GIT: ${{ vars.PP_CLIENT_ID_GIT }}
+      PP_TENANT_ID_GIT: ${{ vars.PP_TENANT_ID_GIT }}
+      PP_ENVIRONMENT_URL_GIT: ${{ vars.PP_ENVIRONMENT_URL_GIT }}
+      EXPECTED_URL_GIT: ${{ matrix.expected_url }}
+    steps:
+      - name: Validate branch and environment configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          for key in PP_CLIENT_ID_GIT PP_TENANT_ID_GIT PP_ENVIRONMENT_URL_GIT; do
+            if [[ -z "${!key}" ]]; then
+              echo "::error::Missing environment variable: $key"
+              exit 1
+            fi
+          done
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "::error::Run this validation from main only."
+            exit 1
+          fi
+          if [[ "$PP_ENVIRONMENT_URL_GIT" != "$EXPECTED_URL_GIT" ]]; then
+            echo "::error::Configured URL does not match the selected environment."
+            exit 1
+          fi
+
+      - name: Install Microsoft Power Platform tools
+        uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Validate passwordless Dataverse connectivity
+        uses: microsoft/powerplatform-actions/who-am-i@v1
+        with:
+          environment-url: ${{ vars.PP_ENVIRONMENT_URL_GIT }}
+          app-id: ${{ vars.PP_CLIENT_ID_GIT }}
+          tenant-id: ${{ vars.PP_TENANT_ID_GIT }}

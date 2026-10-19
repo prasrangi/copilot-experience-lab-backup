@@ -1,0 +1,252 @@
+name: AF-PILOT-Solution-Release-GIT
+run-name: AF Pilot release GIT - ${{ github.run_number }} - PROD=${{ inputs.deploy_prod }}
+
+# Manual lab release. This does not replace an independent production approval.
+on:
+  workflow_dispatch:
+    inputs:
+      deploy_prod:
+        description: Also deploy to PROD after TEST import succeeds
+        type: boolean
+        default: false
+        required: true
+      prod_confirmation:
+        description: For PROD, type DEPLOY-TO-PROD; otherwise leave blank
+        type: string
+        default: ''
+        required: false
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: AF-PILOT-Solution-Release-GIT
+  cancel-in-progress: false
+
+env:
+  SOLUTION_NAME: AF_Pilot_Agent
+  PACKAGE_NAME: AF_Pilot_Agent_managed.zip
+
+jobs:
+  export_dev:
+    name: Export managed package from DEV
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    environment: AF-PILOT-DEV-GIT
+    env:
+      PP_URL: ${{ vars.PP_ENVIRONMENT_URL_GIT }}
+      PP_CLIENT: ${{ vars.PP_CLIENT_ID_GIT }}
+      PP_TENANT: ${{ vars.PP_TENANT_ID_GIT }}
+    outputs:
+      artifact_id: ${{ steps.upload.outputs.artifact-id }}
+      package_sha: ${{ steps.manifest.outputs.package_sha }}
+      solution_version: ${{ steps.manifest.outputs.solution_version }}
+    steps:
+      - name: Check DEV target and manual release request
+        env:
+          PROD_REQUESTED: ${{ inputs.deploy_prod }}
+          PROD_CONFIRMATION: ${{ inputs.prod_confirmation }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = 'YOUR-GITHUB-OWNER/YOUR-REPOSITORY'
+          test "$GITHUB_REF" = 'refs/heads/main'
+          test "${PP_URL%/}" = 'https://YOUR-DEV-ORG.crm.dynamics.com'
+          test "$PP_CLIENT" = 'YOUR-ENTRA-CLIENT-ID'
+          test "$PP_TENANT" = 'YOUR-ENTRA-TENANT-ID'
+          if [[ "$PROD_REQUESTED" == 'true' && "$PROD_CONFIRMATION" != 'DEPLOY-TO-PROD' ]]; then
+            echo '::error::PROD requires the exact confirmation DEPLOY-TO-PROD.'
+            exit 1
+          fi
+          mkdir -p release
+
+      - name: Install Microsoft Power Platform tools
+        uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Validate DEV passwordless connection
+        uses: microsoft/powerplatform-actions/who-am-i@v1
+        with:
+          environment-url: ${{ env.PP_URL }}
+          app-id: ${{ env.PP_CLIENT }}
+          tenant-id: ${{ env.PP_TENANT }}
+
+      # Export the existing version. Do not change DEV version or publish all changes.
+      - name: Export the pilot solution as managed
+        uses: microsoft/powerplatform-actions/export-solution@v1
+        with:
+          environment-url: ${{ env.PP_URL }}
+          app-id: ${{ env.PP_CLIENT }}
+          tenant-id: ${{ env.PP_TENANT }}
+          solution-name: ${{ env.SOLUTION_NAME }}
+          solution-output-file: release/${{ env.PACKAGE_NAME }}
+          managed: 'true'
+          run-asynchronously: 'true'
+          max-async-wait-time: '60'
+
+      - name: Verify managed manifest and record package fingerprint
+        id: manifest
+        shell: python
+        run: |
+          import hashlib, os, pathlib, xml.etree.ElementTree as ET, zipfile
+          package = pathlib.Path('release') / os.environ['PACKAGE_NAME']
+          with zipfile.ZipFile(package) as archive:
+              manifest = next(n for n in archive.namelist() if n.lower() == 'solution.xml')
+              root = ET.fromstring(archive.read(manifest))
+          node = root.find('SolutionManifest')
+          if node is None:
+              raise SystemExit('Missing SolutionManifest')
+          if node.findtext('UniqueName') != os.environ['SOLUTION_NAME']:
+              raise SystemExit('Unexpected solution unique name')
+          if node.findtext('Managed') != '1':
+              raise SystemExit('Only managed packages may be promoted')
+          version = node.findtext('Version', '')
+          digest = hashlib.sha256(package.read_bytes()).hexdigest()
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'package_sha={digest}\nsolution_version={version}\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write(f'### DEV managed export\nSolution: AF_Pilot_Agent\n\nVersion: {version}\n\nSHA-256: `{digest}`\n')
+
+      - name: Store the managed package for this run
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: AF-PILOT-Managed-GIT-${{ github.run_id }}-${{ github.run_attempt }}
+          path: release/AF_Pilot_Agent_managed.zip
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0
+
+  deploy_test:
+    name: Import the same managed package into TEST
+    needs: export_dev
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    environment: AF-PILOT-TEST-GIT
+    env:
+      PP_URL: ${{ vars.PP_ENVIRONMENT_URL_GIT }}
+      PP_CLIENT: ${{ vars.PP_CLIENT_ID_GIT }}
+      PP_TENANT: ${{ vars.PP_TENANT_ID_GIT }}
+      EXPECTED_SHA: ${{ needs.export_dev.outputs.package_sha }}
+    steps:
+      - name: Check TEST target
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = 'refs/heads/main'
+          test "${PP_URL%/}" = 'https://YOUR-TEST-ORG.crm.dynamics.com'
+          test "$PP_CLIENT" = 'YOUR-ENTRA-CLIENT-ID'
+          test "$PP_TENANT" = 'YOUR-ENTRA-TENANT-ID'
+          test -n "$EXPECTED_SHA"
+
+      - name: Download the original DEV artifact by ID
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ needs.export_dev.outputs.artifact_id }}
+          path: release
+          merge-multiple: true
+
+      - name: Verify identical package before TEST import
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$EXPECTED_SHA" "release/$PACKAGE_NAME" | sha256sum --check --strict
+
+      - name: Install Microsoft Power Platform tools
+        uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Validate TEST passwordless connection
+        uses: microsoft/powerplatform-actions/who-am-i@v1
+        with:
+          environment-url: ${{ env.PP_URL }}
+          app-id: ${{ env.PP_CLIENT }}
+          tenant-id: ${{ env.PP_TENANT }}
+
+      - name: Import managed solution into TEST
+        uses: microsoft/powerplatform-actions/import-solution@v1
+        with:
+          environment-url: ${{ env.PP_URL }}
+          app-id: ${{ env.PP_CLIENT }}
+          tenant-id: ${{ env.PP_TENANT }}
+          solution-file: release/${{ env.PACKAGE_NAME }}
+          run-asynchronously: 'true'
+          max-async-wait-time: '60'
+          force-overwrite: 'false'
+          skip-dependency-check: 'false'
+          stage-and-upgrade: 'false'
+          publish-changes: 'false'
+          activate-plugins: 'true'
+
+      - name: Record TEST import completion
+        shell: bash
+        run: |
+          printf '### TEST managed import succeeded\n\nSHA-256: `%s`\n\nAgent publication and functional testing are separate checks.\n' "$EXPECTED_SHA" >> "$GITHUB_STEP_SUMMARY"
+
+  deploy_prod:
+    name: Import the same managed package into PROD
+    needs: [export_dev, deploy_test]
+    if: ${{ inputs.deploy_prod && needs.deploy_test.result == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 75
+    environment: AF-PILOT-PROD-GIT
+    env:
+      PP_URL: ${{ vars.PP_ENVIRONMENT_URL_GIT }}
+      PP_CLIENT: ${{ vars.PP_CLIENT_ID_GIT }}
+      PP_TENANT: ${{ vars.PP_TENANT_ID_GIT }}
+      EXPECTED_SHA: ${{ needs.export_dev.outputs.package_sha }}
+    steps:
+      - name: Check PROD target and explicit release confirmation
+        env:
+          PROD_CONFIRMATION: ${{ inputs.prod_confirmation }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = 'refs/heads/main'
+          test "${PP_URL%/}" = 'https://YOUR-PROD-ORG.crm.dynamics.com'
+          test "$PP_CLIENT" = 'YOUR-ENTRA-CLIENT-ID'
+          test "$PP_TENANT" = 'YOUR-ENTRA-TENANT-ID'
+          test "$PROD_CONFIRMATION" = 'DEPLOY-TO-PROD'
+          test -n "$EXPECTED_SHA"
+
+      - name: Download the original DEV artifact by ID
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ needs.export_dev.outputs.artifact_id }}
+          path: release
+          merge-multiple: true
+
+      - name: Verify identical package before PROD import
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$EXPECTED_SHA" "release/$PACKAGE_NAME" | sha256sum --check --strict
+
+      - name: Install Microsoft Power Platform tools
+        uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Validate PROD passwordless connection
+        uses: microsoft/powerplatform-actions/who-am-i@v1
+        with:
+          environment-url: ${{ env.PP_URL }}
+          app-id: ${{ env.PP_CLIENT }}
+          tenant-id: ${{ env.PP_TENANT }}
+
+      - name: Import managed solution into PROD
+        uses: microsoft/powerplatform-actions/import-solution@v1
+        with:
+          environment-url: ${{ env.PP_URL }}
+          app-id: ${{ env.PP_CLIENT }}
+          tenant-id: ${{ env.PP_TENANT }}
+          solution-file: release/${{ env.PACKAGE_NAME }}
+          run-asynchronously: 'true'
+          max-async-wait-time: '60'
+          force-overwrite: 'false'
+          skip-dependency-check: 'false'
+          stage-and-upgrade: 'false'
+          publish-changes: 'false'
+          activate-plugins: 'true'
+
+      - name: Record PROD import completion
+        shell: bash
+        run: |
+          printf '### PROD managed import succeeded\n\nSHA-256: `%s`\n\nThis confirms import, not agent publication or functional testing.\n' "$EXPECTED_SHA" >> "$GITHUB_STEP_SUMMARY"
