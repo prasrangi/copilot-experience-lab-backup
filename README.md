@@ -11,6 +11,7 @@ This repository is a point-in-time **content backup**, not a complete WordPress 
 - `manifest.json`: article and media inventory, export timestamp, sizes, and SHA-256 integrity hashes.
 - `index.html`: local article index.
 - `prepare_backup.py`: standard-library-only utility for packaging a fresh sanitized export.
+- `reference-workflows/github-alm/`: sanitized YAML companion files and setup notes for the GitHub ALM article. These are reference files, not active workflows in this repository.
 
 The export deliberately excludes passwords, authentication cookies, API tokens, database credentials, user-account records, comments, and Azure secrets.
 

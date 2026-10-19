@@ -1,8 +1,16 @@
 {
   "schemaVersion": 1,
-  "exportedAt": "2026-10-18T17:36:10.841Z",
+  "exportedAt": "2026-10-19T16:27:35.487Z",
   "sourceSite": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io",
   "articles": [
+    {
+      "id": 311,
+      "title": "Agent Factory ALM with GitHub Actions",
+      "status": "publish",
+      "path": "articles/311-github-alm-for-copilot-studio.html",
+      "metadataPath": "metadata/311.json",
+      "sha256": "01ef30e8275bacee433cafe0e42d89d35ed4053aacf93bd911ed83542639d519"
+    },
     {
       "id": 280,
       "title": "Azure DevOps ALM for a Governed Agent Factory",
@@ -109,6 +117,209 @@
     }
   ],
   "media": [
+    {
+      "id": 341,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-29.png",
+      "path": "media/341-github-alm-redacted-29.png",
+      "bytes": 426634,
+      "sha256": "744d713ae116abeca3da7bd80e192e996dcdec2cfe4a46c446bb6ecc17c65e4e"
+    },
+    {
+      "id": 340,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-28.png",
+      "path": "media/340-github-alm-redacted-28.png",
+      "bytes": 160248,
+      "sha256": "12abd7ba55e93b7d451f1886cf76b514bf7af1d582ce796b05823fa08e38a62a"
+    },
+    {
+      "id": 339,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-27.png",
+      "path": "media/339-github-alm-redacted-27.png",
+      "bytes": 115836,
+      "sha256": "8e1b3c2f739bcf0ad9e1b41f468362eda0805c52c7b386aa3b3cacf8ae0b945d"
+    },
+    {
+      "id": 338,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-26.png",
+      "path": "media/338-github-alm-redacted-26.png",
+      "bytes": 322116,
+      "sha256": "dfdfda3e5555d4442771da1c1b9b475802cbf6e8b39e89ee33473868c0b13acf"
+    },
+    {
+      "id": 337,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-25.png",
+      "path": "media/337-github-alm-redacted-25.png",
+      "bytes": 129500,
+      "sha256": "267da0d476b7999c55e555feec90efcfad1fb53ef1f1e900bc21501290d80d27"
+    },
+    {
+      "id": 336,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-24.png",
+      "path": "media/336-github-alm-redacted-24.png",
+      "bytes": 385230,
+      "sha256": "b73ebf45d5179e5493e863dcad8c0dc95a01d6d2b19f18e1344f5f071d727cee"
+    },
+    {
+      "id": 335,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-23.png",
+      "path": "media/335-github-alm-redacted-23.png",
+      "bytes": 216918,
+      "sha256": "92c54b2658311617c94f63ece2b19858eab995f90c3afaabcf056eda890f4d1b"
+    },
+    {
+      "id": 334,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-22.png",
+      "path": "media/334-github-alm-redacted-22.png",
+      "bytes": 363842,
+      "sha256": "88e5784ab0c2e68171585e29d4a8882c1dd515875fd30589ad32d066fdc66037"
+    },
+    {
+      "id": 333,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-21.png",
+      "path": "media/333-github-alm-redacted-21.png",
+      "bytes": 552894,
+      "sha256": "f6f83e0100f941e301ac83e31af43773fa0da4bb6b2f39e0543ffd1fa399fcc6"
+    },
+    {
+      "id": 332,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-20.png",
+      "path": "media/332-github-alm-redacted-20.png",
+      "bytes": 357018,
+      "sha256": "0d3c152b692eaf87762614eb60eaf068f0cc58f2818320f03aec44c83d0e134b"
+    },
+    {
+      "id": 331,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-19.png",
+      "path": "media/331-github-alm-redacted-19.png",
+      "bytes": 74393,
+      "sha256": "b0af3910e8aa03862c75896b5b5f9ca8d14833cf02599dbf1daebd906b39104c"
+    },
+    {
+      "id": 330,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-18.png",
+      "path": "media/330-github-alm-redacted-18.png",
+      "bytes": 470629,
+      "sha256": "c183410481e56387663eae6828da13432f02d6c266b3919503cceec83692cd3a"
+    },
+    {
+      "id": 329,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-17.png",
+      "path": "media/329-github-alm-redacted-17.png",
+      "bytes": 401340,
+      "sha256": "082e9d4be50af6b23be46655524b91339e210ecd4e470c58d97e7f9f3c78d927"
+    },
+    {
+      "id": 328,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-16.png",
+      "path": "media/328-github-alm-redacted-16.png",
+      "bytes": 253126,
+      "sha256": "8c2d9896f111a629c38aa1096a7ba32194137a08552d4373641eb3d4afbd8cca"
+    },
+    {
+      "id": 327,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-15.png",
+      "path": "media/327-github-alm-redacted-15.png",
+      "bytes": 259789,
+      "sha256": "8e346c7935608469814d7b815c99f05c6d250de364ac38338ba8ee65a7f290f4"
+    },
+    {
+      "id": 326,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-14.png",
+      "path": "media/326-github-alm-redacted-14.png",
+      "bytes": 225861,
+      "sha256": "de3a169f513d7aa584372dfc1aaecf8e649eb6d4f8eb7fb5a6ba0552663ef7bf"
+    },
+    {
+      "id": 325,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-13.png",
+      "path": "media/325-github-alm-redacted-13.png",
+      "bytes": 197227,
+      "sha256": "3b5873f7bc0c2764d29caaa277d150affb418eeed5689a95e2b43a49a7e9db78"
+    },
+    {
+      "id": 324,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-12.png",
+      "path": "media/324-github-alm-redacted-12.png",
+      "bytes": 154725,
+      "sha256": "a25e3ad2c48b6eaa3ddf6f35d78be8ff6b4461a23dc8df63b9c4eba0e141b153"
+    },
+    {
+      "id": 323,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-11.png",
+      "path": "media/323-github-alm-redacted-11.png",
+      "bytes": 417897,
+      "sha256": "ae399e34ded839cdabbba227ffa55b3e8fcb0af4c85a67c1c4da00da203256da"
+    },
+    {
+      "id": 322,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-10.png",
+      "path": "media/322-github-alm-redacted-10.png",
+      "bytes": 313842,
+      "sha256": "fb91f93392a491623f47b348a267517804e8b041dcca7d2c1999aaaf2ce3c5cd"
+    },
+    {
+      "id": 321,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-09.png",
+      "path": "media/321-github-alm-redacted-09.png",
+      "bytes": 355496,
+      "sha256": "6ea4b7b8bdf27583173e32452770c35a59c626b37ac030f00ab6cdcc82ece0bb"
+    },
+    {
+      "id": 320,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-08.png",
+      "path": "media/320-github-alm-redacted-08.png",
+      "bytes": 304301,
+      "sha256": "a3f33f6c5358ee321a1279d70015519527a327eaa5de854e7fa71b2b68b3427d"
+    },
+    {
+      "id": 319,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-07.png",
+      "path": "media/319-github-alm-redacted-07.png",
+      "bytes": 489937,
+      "sha256": "e55c8c4dfe39ea812db6a5a9ef7e22df0c4af8eab24941e3bbb7c464a5ce67f7"
+    },
+    {
+      "id": 318,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-06.png",
+      "path": "media/318-github-alm-redacted-06.png",
+      "bytes": 322008,
+      "sha256": "bad01554508f4ee561fc58b7e17c8a12949eee8e0d1e34463ef0cae4d54c24a1"
+    },
+    {
+      "id": 317,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-05.png",
+      "path": "media/317-github-alm-redacted-05.png",
+      "bytes": 386370,
+      "sha256": "7bf012febe7aa5a2b3dd166a917880dcd78b51e579f9689e1d18b6f5dfde3c39"
+    },
+    {
+      "id": 316,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-04.png",
+      "path": "media/316-github-alm-redacted-04.png",
+      "bytes": 303398,
+      "sha256": "5548279f30ad93e5d639b42592b31ee63871ca11e64f62175e811e5f8a76977a"
+    },
+    {
+      "id": 315,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-03.png",
+      "path": "media/315-github-alm-redacted-03.png",
+      "bytes": 237918,
+      "sha256": "d1b2f9c2dd7d5efa73245e74f6aba3518ee899e98b2b52d58fe879fd92d5dd93"
+    },
+    {
+      "id": 314,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-02.png",
+      "path": "media/314-github-alm-redacted-02.png",
+      "bytes": 201255,
+      "sha256": "cf8712ba32398fea518dbd442712fae60fc346b5c3618d345d425f00638bc6e4"
+    },
+    {
+      "id": 313,
+      "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/github-alm-redacted-01.png",
+      "path": "media/313-github-alm-redacted-01.png",
+      "bytes": 367499,
+      "sha256": "9d28b00baed256960e25e276dcd6b952edb73112a118b514d6e14e94cfd2dcac"
+    },
     {
       "id": 278,
       "sourceUrl": "https://ca-copilotexperiencelab-hwsaws.jollyhill-9f56f37c.centralindia.azurecontainerapps.io/wp-content/uploads/2026/10/azure-devops-alm-54.png",
@@ -1482,7 +1693,26 @@
       "sha256": "a2ac253b3c18d352b1c759b75d6c31ab461ee994e8c531017f291131aa9060d8"
     }
   ],
-  "articleCount": 13,
-  "mediaCount": 196,
-  "mediaBytes": 49607420
+  "articleCount": 14,
+  "mediaCount": 225,
+  "mediaBytes": 58374667,
+  "referenceFiles": [
+    {
+      "sha256": "5c38d198d27c9d2d53a1c98e4bc1b0cf156774e12b8d6c40a583ff55c27f51ab",
+      "bytes": 2031,
+      "path": "reference-workflows/github-alm/af-pilot-oidc-validate-GIT.yml",
+      "sanitized": true
+    },
+    {
+      "sha256": "52235fcc8f552f224ce7ec2f0387ccda45fc8f54203c6978e6dcf5d649b0e7e9",
+      "bytes": 9761,
+      "path": "reference-workflows/github-alm/af-pilot-solution-release-GIT.yaml",
+      "sanitized": true
+    },
+    {
+      "sha256": "1e56569c6079734997aa5642b9e38701479ff51aac387ad8783fee975e7f1986",
+      "bytes": 2143,
+      "path": "reference-workflows/github-alm/README.md"
+    }
+  ]
 }
